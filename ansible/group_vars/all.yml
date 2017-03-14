@@ -73,7 +73,7 @@ vault_aws_region: us-west-2
 vault_port: 65240
 vault_ssl_port: 65241
 
-domain: runnable-cloud.com
+domain: runnablecloud.com
 mongo_port: 27017
 node_env: hot-grizzly
 pg_user: astral
