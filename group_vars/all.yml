@@ -3,7 +3,7 @@ api_aws_secret_access_key: uYjxW3/ndlFvVxLmJvvVOBbReL8OfUbPbDjkN1RZ
 api_github_client_id: ${GITHUB_CLIEND_ID}
 api_github_client_secret: ${GITHUB_CLIENT_SECRET}
 api_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
-api_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
+api_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
 api_mongo_database: hot-grizzly
 api_mongo_replset_name: hot-grizzly-rs0
 api_s3_context_bucket: runnable.context.resources.hot-grizzly
@@ -12,24 +12,24 @@ big_poppa_pg_pass: ${POSTGRES_PASSWORD}
 big_poppa_pg_host: ${POSTGRES_HOST}:${POSTGRES_PORT}
 big_poppa_pg_port: ${POSTGRES_PORT}
 big_poppa_pg_user: big_poppa
-big_poppa_github_token: ${GITHUB_ACCESS_TOKEN}
-big_poppa_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
-big_poppa_mongo_database: ${MONGO_DATABASE}
-big_poppa_mongo_replset_name: ${MONGO_DATABASE}-rs0
+big_poppa_github_token: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
+big_poppa_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
+big_poppa_mongo_database: hot-grizzly
+big_poppa_mongo_replset_name: hot-grizzly-rs0
 big_poppa_pg_pool_min: 10
 big_poppa_pg_pool_max: 20
 
-cream_hello_runnable_github_token: ${GITHUB_ACCESS_TOKEN}
-cream_stripe_secret_key: ${STRIPE_SECRET_KEY}
-cream_stripe_publishable_key: ${STRIPE_PUBLISHABLE_KEY}
+cream_hello_runnable_github_token: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
+cream_stripe_secret_key: sk_test_4De8Zdkfcyb29swkMmjZUMRh
+cream_stripe_publishable_key: pk_test_sHr5tQaPtgwiE2cpW6dQkzi8
 
 drake_port: 80
 
-khronos_mongo_auth: ${MONGO_USER}:${MONGO_PASSWORD}
-khronos_mongo_database: ${MONGO_DATABASE}
-khronos_mongo_replset_name: ${MONGO_DATABASE}
+khronos_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
+khronos_mongo_database: hot-grizzly
+khronos_mongo_replset_name: hot-grizzly
 
-navi_cookie_secret: ${COOKIE_SECRET}
+navi_cookie_secret: 966b064bad58465e80e6333482af77f9
 navi_proxy_port: 65100
 navi_proxy_ssl_port: 65101
 
@@ -38,19 +38,19 @@ optimus_aws_secret_id: uYjxW3/ndlFvVxLmJvvVOBbReL8OfUbPbDjkN1RZ
 optimus_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
 
 
-pheidi_mongo_auth: ${MONGO_USER}:${MONGO_PASSWORD}
-pheidi_mongo_database: ${MONGO_DATABASE}
-pheidi_mongo_replset_name: ${MONGO_DATABASE}
-pheidi_runnabot_tokens: ${GITHUB_ACCESS_TOKEN}
+pheidi_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
+pheidi_mongo_database: hot-grizzly
+pheidi_mongo_replset_name: hot-grizzly
+pheidi_runnabot_tokens: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
 
 registry_s3_access_key: AKIAJZLLEJFE7KDUVVVQ
 registry_s3_secret_key: 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
 registry_s3_bucket: runnableimages.hot-grizzly
-registry_s3_region: ${AWS_REGION}
+registry_s3_region: us-west-2
 
 aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
 aws_secret_access_key: AKIAJZLLEJFE7KDUVVVQ
-shiva_aws_region: ${AWS_REGION}
+shiva_aws_region: us-west-2
 shiva_dock_security_groups: ${AWS_DOCK_SG}
 shiva_ssh_key_name: ${AWS_SSH_KEY_NAME}
 shiva_aws_instance_image_id: ${AWS_DOCK_AMI_ID}
@@ -66,10 +66,10 @@ aws_access_key: AKIAJZLLEJFE7KDUVVVQ
 aws_secret_key: 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
 environment_name: hot-grizzly
 
-vault_hello_runnable_github_token: ${GITHUB_ACCESS_TOKEN_HELLO_RUNNABLE}
+vault_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
 vault_aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
 vault_aws_secret_key: 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
-vault_aws_region: ${AWS_REGION}
+vault_aws_region: us-west-2
 vault_port: 65240
 vault_ssl_port: 65241
 
@@ -79,8 +79,8 @@ node_env: hot-grizzly
 pg_user: astral
 pg_pass: ${POSTGRES_PASSWORD}
 pg_host: ${POSTGRES_HOST}:${POSTGRES_PORT}
-rabbit_password: ${RABBIT_PASSWORD}
-rabbit_username: ${RABBIT_USERNAME}
+rabbit_password: dfaf1bd173e74f14823c63437979db0e
+rabbit_username: e50d3d3e86514ca29a96b951f69a1daa
 registry_port: 65001
 consul_api_port: 65200
 consul_https_port: 65201
@@ -89,7 +89,7 @@ user_content_domain: runnabae.com
 max_navi_port: 65000
 redis_port: 65075
 redis_tls_port: 65076
-api_hello_runnable_github_token: ${GITHUB_ACCESS_TOKEN_HELLO_RUNNABLE}
+api_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
 vault_auth_token: ${REMOTE_VAULT_ROOT_TOKEN}
 vault_token_01: ${REMOTE_VAULT_TOKEN_1}
 vault_token_02: ${REMOTE_VAULT_TOKEN_2}
