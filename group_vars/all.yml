@@ -2,11 +2,11 @@ api_aws_access_key_id: ${AWS_ACCESS_KEY_ID_1}
 api_aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY_1}
 api_github_client_id: ${GITHUB_CLIEND_ID}
 api_github_client_secret: ${GITHUB_CLIENT_SECRET}
-api_github_deploy_keys_bucket: runnable.deploykeys.${ENV}
+api_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
 api_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
-api_mongo_database: ${ENV}
-api_mongo_replset_name: ${ENV}-rs0
-api_s3_context_bucket: runnable.context.resources.${ENV}
+api_mongo_database: hot-grizzly
+api_mongo_replset_name: hot-grizzly-rs0
+api_s3_context_bucket: runnable.context.resources.hot-grizzly
 
 big_poppa_pg_pass: ${POSTGRES_PASSWORD}
 big_poppa_pg_host: ${POSTGRES_HOST}:${POSTGRES_PORT}
@@ -35,7 +35,7 @@ navi_proxy_ssl_port: 65101
 
 optimus_aws_access_id: ${AWS_ACCESS_KEY_ID_1}
 optimus_aws_secret_id: ${AWS_SECRET_ACCESS_KEY_1}
-optimus_github_deploy_keys_bucket: runnable.deploykeys.${ENV}
+optimus_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
 
 
 pheidi_mongo_auth: ${MONGO_USER}:${MONGO_PASSWORD}
@@ -45,7 +45,7 @@ pheidi_runnabot_tokens: ${GITHUB_ACCESS_TOKEN}
 
 registry_s3_access_key: ${AWS_ACCESS_KEY_ID_1}
 registry_s3_secret_key: ${AWS_SECRET_ACCESS_KEY_1}
-registry_s3_bucket: runnableimages.${ENV}
+registry_s3_bucket: runnableimages.hot-grizzly
 registry_s3_region: ${AWS_REGION}
 
 aws_access_key_id: ${AWS_ACCESS_KEY_ID_1}
@@ -56,15 +56,15 @@ shiva_ssh_key_name: ${AWS_SSH_KEY_NAME}
 shiva_aws_instance_image_id: ${AWS_DOCK_AMI_ID}
 shiva_aws_instance_image_name: ${AWS_DOCK_AMI_NAME}
 shiva_aws_instance_type: t2.medium
-shiva_dock_pool_asg_name: ${ENV}-asg-dock-pool
-shiva_aws_launch_configuration_name: ${ENV}-lc-${AWS_LC_VERSION}
+shiva_dock_pool_asg_name: hot-grizzly-asg-dock-pool
+shiva_aws_launch_configuration_name: hot-grizzly-lc-${AWS_LC_VERSION}
 shiva_aws_auto_scaling_group_subnets: ${AWS_ASG_SUBNET}
 shiva_aws_auto_scaling_group_max: 29
-shiva_aws_auto_scaling_group_prefix: asg-${ENV}-
+shiva_aws_auto_scaling_group_prefix: asg-hot-grizzly-
 
 aws_access_key: ${AWS_ACCESS_KEY_ID_1}
 aws_secret_key: ${AWS_SECRET_ACCESS_KEY_1}
-environment_name: ${ENV}
+environment_name: hot-grizzly
 
 vault_hello_runnable_github_token: ${GITHUB_ACCESS_TOKEN_HELLO_RUNNABLE}
 vault_aws_access_key_id: ${AWS_ACCESS_KEY_ID_1}
@@ -73,9 +73,9 @@ vault_aws_region: ${AWS_REGION}
 vault_port: 65240
 vault_ssl_port: 65241
 
-domain: ${DOMAIN}
+domain: runnable-cloud.com
 mongo_port: 27017
-node_env: ${ENV}
+node_env: hot-grizzly
 pg_user: astral
 pg_pass: ${POSTGRES_PASSWORD}
 pg_host: ${POSTGRES_HOST}:${POSTGRES_PORT}
@@ -85,7 +85,7 @@ registry_port: 65001
 consul_api_port: 65200
 consul_https_port: 65201
 swarm_master_port: 65250
-user_content_domain: ${USER_CONTENT_DOMAIN}
+user_content_domain: runnabae.com
 max_navi_port: 65000
 redis_port: 65075
 redis_tls_port: 65076
