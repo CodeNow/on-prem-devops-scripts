@@ -52,10 +52,10 @@ registry_s3_region: us-west-2
 aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
 aws_secret_access_key: AKIAJZLLEJFE7KDUVVVQ
 shiva_aws_region: us-west-2
-shiva_dock_security_groups: ${AWS_DOCK_SG}
-shiva_ssh_key_name: ${AWS_SSH_KEY_NAME}
-shiva_aws_instance_image_id: ${AWS_DOCK_AMI_ID}
-shiva_aws_instance_image_name: ${AWS_DOCK_AMI_NAME}
+shiva_dock_security_groups: sg-ec0da194
+shiva_ssh_key_name: gamma-key
+shiva_aws_instance_image_id: ami-30c74e50
+shiva_aws_instance_image_name: dock-ami-build-v.0.0.1
 shiva_aws_instance_type: t2.medium
 shiva_dock_pool_asg_name: hot-grizzly-asg-dock-pool
 shiva_aws_launch_configuration_name: hot-grizzly-lc-${AWS_LC_VERSION}
@@ -67,12 +67,18 @@ aws_access_key: AKIAJZLLEJFE7KDUVVVQ
 aws_secret_key: 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
 environment_name: hot-grizzly
 
+consul_host_address: "{{ hostvars[groups['consul'][0]]['ansible_default_ipv4']['address'] }}"
+
 vault_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
 vault_aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
 vault_aws_secret_key: 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
 vault_aws_region: us-west-2
 vault_port: 65240
 vault_ssl_port: 65241
+
+log_driver: syslog
+log_facility: local7
+app_log_dir: /docker/app-logs
 
 domain: runnablecloud.com
 mongo_port: 27017

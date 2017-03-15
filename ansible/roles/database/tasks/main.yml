@@ -1,0 +1,4 @@
+---
+- name: create database directory
+  become: true
+  file: path={{ db_path }} state=directory
