@@ -1,0 +1,19 @@
+---
+- hosts: user-local
+  connection: local
+  tasks:
+  - name: generate client certs
+    shell:
+      cmd: ./genClientCert.sh "{{ item }}" "{{ groups['main'][0] }}"
+      chdir: ./roles/docker_client/scripts/
+    with_items:
+      - "api"
+      - "api-core"
+      - "socket-server"
+      - "workers"
+      - "khronos"
+      - "palantiri"
+      - "docker-listener"
+      - "shiva"
+      - "sauron"
+      - "swarm-manager"

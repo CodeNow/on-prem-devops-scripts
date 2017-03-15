@@ -1,0 +1,24 @@
+---
+- name: create docker cert directory
+  become: true
+  file:
+    path=/opt/ssl/docker/{{ name }}
+    state=directory
+
+- name: copy docker CA
+  become: true
+  copy:
+    src=certs/ca.pem
+    dest=/opt/ssl/docker/{{ name }}
+    mode=0440
+    owner=root
+    group=root
+
+- name: copy docker client key and cert
+  become: true
+  copy:
+    src=certs/{{ name }}/
+    dest=/opt/ssl/docker/{{ name }}
+    mode=0440
+    owner=root
+    group=root
