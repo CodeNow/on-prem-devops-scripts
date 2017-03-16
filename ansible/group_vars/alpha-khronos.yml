@@ -1,0 +1,73 @@
+name: khronos
+
+container_image: registry.runnable.com/runnable/{{ name }}
+container_tag: "{{ git_branch }}"
+repo: "git@github.com:CodeNow/{{ name }}.git"
+node_version: "4.4.7"
+npm_version: 2
+
+dockerfile_enviroment: [
+  "NPM_TOKEN {{ npm_token }}"
+]
+dockerfile_pre_install_commands: [
+   'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc'
+]
+
+# for cron job
+# this is the list of queues we want to enqueue a job into
+main_cron_queues: "\
+  containers.image-builder.prune \
+  containers.orphan.prune \
+  context-versions.prune-expired \
+  images.prune \
+  instances.cleanup \
+  weave.prune"
+
+canary_cron_queues: "\
+  canary.build.run \
+  canary.github-branch.run \
+  canary.log.run \
+  canary.network.run \
+  metrics.container-status"
+
+hourly_canary_cron_queues: "\
+  canary.failover.run"
+
+# a nice version of the rabbitmq host
+cron_rabbit_host_address: "{{ rabbit_host_address }}:{{ rabbit_port }}"
+# a quick version of authentication for rabbit for cron
+cron_rabbit_auth: --username {{ rabbit_username }} --password {{ rabbit_password }}
+
+# for container settings
+container_envs: >
+  -e API_SOCKET_SERVER=https://{{ api_socket_server_hostname }}
+  -e API_URL={{ api_url }}
+  -e BIG_POPPA_HOST=http://{{ big_poppa_host_address }}:{{ big_poppa_port }}
+  -e CONSUL_HOST={{ consul_host_address }}:{{ consul_api_port }}
+  -e CANARY_API_TOKEN={{ khronos_canary_token | default('undefined') }}
+  {% if khronos_canary_failover_token is defined %}
+    -e CANARY_API_FAILOVER_TOKEN={{ khronos_canary_failover_token | default('undefined') }}
+  {% endif %}
+  -e CANARY_GITHUB_BRANCHES_INSTANCE_ID={{ khronos_canary_github_branches_instance_id | default('undefined') }}
+  -e CANARY_LOG_INSTANCE_ID={{ khronos_canary_logs_instance_id | default('undefined') }}
+  -e CANARY_LOG_TERMINAL_SLEEP=10
+  -e CANARY_REBUILD_INSTANCE_ID={{ khronos_canary_rebuild_instance_id | default('undefined') }}
+  -e CANARY_REBUILD_NAVI_URL={{ khronos_canary_rebuild_navi_url | default('undefined') }}
+  -e KHRONOS_MONGO=mongodb://{{ khronos_mongo_auth }}@{{ mongo_hosts }}/{{ khronos_mongo_database }}
+  -e NODE_ENV={{ node_env }}
+  -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
+  -e RABBITMQ_PASSWORD={{ rabbit_password }}
+  -e RABBITMQ_PORT={{ rabbit_port }}
+  -e RABBITMQ_USERNAME={{ rabbit_username }}
+  -e SWARM_HOST=http://{{ swarm_host_address }}:{{ swarm_master_port }}
+  -e USER_CONTENT_DOMAIN={{ user_content_domain }}
+  -e WORKER_MAX_RETRY_DELAY=3600000
+
+container_run_opts: >
+  -h {{ name }}
+  -d
+  -v /opt/ssl/docker/{{ name }}:/etc/ssl/docker:ro
+  -v /opt/ssl/mongo-client:/opt/ssl/mongo-client:ro
+  {{container_envs}}
+
+container_run_args: timeout 1h npm start

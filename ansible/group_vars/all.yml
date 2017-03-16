@@ -9,7 +9,10 @@ api_mongo_replset_name: hot-grizzly-rs0
 api_s3_context_bucket: runnable.context.resources.hot-grizzly
 api_hostname: api.{{ domain }}
 api_url: https://{{ api_hostname }}
+api_socket_server_hostname: apisock.{{ domain }}
 
+
+big_poppa_host_address: "{{ hostvars[groups['big-poppa'][0]]['ansible_default_ipv4']['address'] }}"
 big_poppa_pg_pass: 7e60015444144abdbe7124813b2ac9fc
 big_poppa_pg_host: big-poppa.cnksgdqarobf.us-west-2.rds.amazonaws.com:5432
 big_poppa_pg_port: 5432
@@ -21,6 +24,7 @@ big_poppa_mongo_database: hot-grizzly
 big_poppa_mongo_replset_name: hot-grizzly-rs0
 big_poppa_pg_pool_min: 10
 big_poppa_pg_pool_max: 20
+big_poppa_port: 7788
 
 cream_hello_runnable_github_token: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
 cream_stripe_secret_key: sk_test_4De8Zdkfcyb29swkMmjZUMRh
@@ -52,7 +56,7 @@ registry_s3_bucket: runnableimages.hot-grizzly
 registry_s3_region: us-west-2
 
 aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
-aws_secret_access_key: AKIAJZLLEJFE7KDUVVVQ
+aws_secret_access_key: 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
 shiva_aws_region: us-west-2
 shiva_dock_security_groups: sg-ec0da194
 shiva_ssh_key_name: gamma-key
@@ -70,6 +74,8 @@ aws_secret_key: uYjxW3/ndlFvVxLmJvvVOBbReL8OfUbPbDjkN1RZ
 environment_name: hot-grizzly
 
 consul_host_address: "{{ hostvars[groups['consul'][0]]['ansible_default_ipv4']['address'] }}"
+consul_https_port: 65201
+consul_api_port: 65201
 
 vault_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
 vault_aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
@@ -83,6 +89,11 @@ log_driver: syslog
 log_facility: local7
 app_log_dir: /docker/app-logs
 
+pg_user: a6c6898ffb866437
+pg_pass: 7e60015444144abdbe7124813b2ac9fc
+pg_host: big-poppa.cnksgdqarobf.us-west-2.rds.amazonaws.com:5432
+pg_database: astral
+
 rabbit_password: dfaf1bd173e74f14823c63437979db0e
 rabbit_username: e50d3d3e86514ca29a96b951f69a1daa
 rabbit_host_address: "{{ hostvars[groups['rabbitmq'][0]]['ansible_default_ipv4']['address'] }}"
@@ -94,15 +105,27 @@ redis_port: 65075
 registry_s3_bucket: runnableimages.hot-grizzly
 registry_s3_region: us-west-2
 
-domain: runnablecloud.com
+swarm_master_port: 65250
+swarm_host_address: "{{ hostvars[groups['swarm-manager'][0]]['ansible_default_ipv4']['address'] }}"
+swarm_container_name: swarm
+swarm_version: v1.2.3-0
+
+docker_ca_path: /etc/ssl/docker/ca.pem
+docker_key_path: /etc/ssl/docker/key.pem
+docker_cert_path: /etc/ssl/docker/cert.pem
+docker_port: 4242
+
 mongo_port: 27017
+mongo_hosts: "{% for host in groups['mongodb'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ mongo_port }}{% if not loop.last %},{% endif %}{% endfor %}"
+
+github_varnish_port: 8765
+github_domain: api.github.com
+is_github_enterprise: false
+github_protocol: https
+
+domain: runnablecloud.com
 node_env: hot-grizzly
-pg_user: a6c6898ffb866437
-pg_pass: 7e60015444144abdbe7124813b2ac9fc
-pg_host: big-poppa.cnksgdqarobf.us-west-2.rds.amazonaws.com:5432
-pg_database: astral
 registry_port: 65001
-consul_https_port: 65201
 swarm_master_port: 65250
 user_content_domain: runnabae.com
 max_navi_port: 65000
@@ -115,8 +138,5 @@ vault_token_02: e66d688de27362bfbc4d226e823e1e5c49b540c3320c043cb0ec79aef6005a03
 vault_token_03: d5bfe5de26570a53b87a3a64c76f0d253a7d3c11cd09f46912e0cfbcdaee356903
 vault_token_04: f60812ddeee41a30aae2a6c93531e7c720dfb20a905461122492c3b2b210fcfa04
 vault_token_05: c5da9f8e2ac072dcaed5bec37060f4be5317ced86f519147869e75a09efe939005
-github_domain: api.github.com
-is_github_enterprise: false
-github_protocol: https
 proxy_container_image: runnable/sticky-nginx
 proxy_container_image_version: v1.8.1

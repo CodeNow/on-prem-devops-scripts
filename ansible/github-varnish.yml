@@ -1,0 +1,6 @@
+---
+- hosts: github-varnish
+  vars_files:
+  - group_vars/alpha-github-varnish.yml
+  roles:
+  - { role: container_kill_start }

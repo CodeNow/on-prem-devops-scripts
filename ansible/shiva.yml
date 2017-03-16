@@ -1,0 +1,11 @@
+---
+- hosts: redis
+- hosts: rabbitmq
+- hosts: consul
+
+- hosts: shiva
+  vars_files:
+    - group_vars/alpha-shiva.yml
+  roles:
+  - { role: logs }
+  - { role: container_kill_start }

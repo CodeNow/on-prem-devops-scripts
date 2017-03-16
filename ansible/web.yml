@@ -1,0 +1,11 @@
+---
+- hosts: consul
+
+- hosts: web
+  vars_files:
+    - group_vars/alpha-web.yml
+  roles:
+  - role: notify
+    rollbar_token: "{{ rollbar_web_token }}"
+    tags: [ notify ]
+  - { role: builder, tags: "build" }

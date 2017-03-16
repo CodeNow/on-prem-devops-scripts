@@ -1,0 +1,12 @@
+---
+- hosts: rabbitmq
+- hosts: consul
+- hosts: swarm-manager
+
+- hosts: docker-listener
+  vars_files:
+    - group_vars/alpha-docker-listener.yml
+  roles:
+  - { role: logs }
+  - { role: docker_client }
+  - { role: container_kill_start }

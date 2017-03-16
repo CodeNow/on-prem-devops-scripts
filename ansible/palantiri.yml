@@ -1,0 +1,12 @@
+---
+- hosts: rabbitmq
+- hosts: consul
+- hosts: swarm-manager
+
+- hosts: palantiri
+  vars_files:
+    - group_vars/alpha-palantiri.yml
+  roles:
+  - { role: logs }
+  - { role: docker_client }
+  - { role: container_kill_start }

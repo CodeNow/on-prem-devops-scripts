@@ -1,0 +1,8 @@
+---
+- hosts: consul
+
+- hosts: api
+  vars_files:
+  - group_vars/alpha-registrator.yml
+  roles:
+  - role: container_kill_start

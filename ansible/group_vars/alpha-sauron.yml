@@ -1,0 +1,35 @@
+name: sauron
+
+container_image: "registry.runnable.com/runnable/{{ name }}"
+container_tag: "{{ git_branch }}"
+repo: "git@github.com:CodeNow/{{ name }}.git"
+node_version: "4.2.2"
+npm_version: "2.14.7"
+
+weave_path: "/bin/weave"
+docker_path: "/bin/docker"
+
+dockerfile_pre_install_commands: [
+  "curl -L https://get.docker.com/builds/Linux/x86_64/docker-1.6.2 -o {{ docker_path }}",
+  "chmod a+x {{ docker_path }}",
+  "curl -L https://github.com/weaveworks/weave/releases/download/v1.5.0/weave -o {{ weave_path }}",
+  "chmod a+x {{ weave_path }}"
+]
+
+container_envs: >
+  -e CONSUL_HOST={{ consul_host_address }}:{{ consul_api_port }}
+  -e NODE_ENV="{{ node_env }}"
+  -e RABBITMQ_HOSTNAME="{{ rabbit_host_address }}"
+  -e RABBITMQ_PASSWORD="{{ rabbit_password }}"
+  -e RABBITMQ_PORT="{{ rabbit_port }}"
+  -e RABBITMQ_USERNAME="{{ rabbit_username }}"
+  {% if sauron_rollbar_key is defined %} -e ROLLBAR_KEY={{ sauron_rollbar_key }} {% endif %}
+  -e SWARM_HOSTNAME={{ swarm_host_address }}
+  -e SWARM_PORT={{ swarm_master_port }}
+  -e WEAVE_PATH={{ weave_path }}
+
+container_run_opts: >
+  -h {{ name }}
+  -d
+  -v /opt/ssl/docker/{{ name }}:/etc/ssl/docker:ro
+  {{ container_envs }}

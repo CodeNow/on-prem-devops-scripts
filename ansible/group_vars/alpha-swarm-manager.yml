@@ -1,0 +1,20 @@
+name: "swarm-manager"
+
+# container_kill_start settings
+container_image: runnable/swarm
+container_tag: "{{ swarm_version }}"
+
+memory_hard_limit: 10g
+
+container_run_opts: >
+  -d
+  -p {{ swarm_master_port }}:2375
+  -v /opt/ssl/docker/{{ name }}:/etc/ssl/docker:ro
+
+container_run_args: >
+  manage
+  --tlsverify
+  --tlscacert={{ docker_ca_path }}
+  --tlscert={{ docker_cert_path }}
+  --tlskey={{ docker_key_path }}
+  consul://{{ consul_host_address }}:{{ consul_api_port }}/swarm

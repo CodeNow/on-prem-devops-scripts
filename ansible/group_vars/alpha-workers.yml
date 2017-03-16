@@ -1,0 +1,18 @@
+name: api-worker
+
+container_image: registry.runnable.com/runnable/{{ name }}
+
+memory_hard_limit: 1g
+
+# for container settings
+container_envs: >
+  {{ api_base_container_envs }}
+  -e IS_QUEUE_WORKER=true
+  {% if api_workers_rollbar_key is defined %} -e ROLLBAR_KEY={{ api_workers_rollbar_key }} {% endif %}
+
+container_run_opts: >
+  -h {{ name }}
+  -d
+  -v /opt/ssl/docker/{{ name }}:/etc/ssl/docker:ro
+  -v /opt/ssl/mongodb-client:/opt/ssl/mongodb-client:ro
+  {{ container_envs }}
