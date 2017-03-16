@@ -1,4 +1,5 @@
 - name: look for stopped {{ container_image }} containers
+  tags: deploy
   become: yes
   shell: >
     docker ps -a |
@@ -9,26 +10,35 @@
   changed_when: stopped_containers.stdout != ''
 
 - name: removed stopped {{ container_image }} containers
+  tags: deploy
+  become: true
   when: stopped_containers.changed
   shell: docker rm {{ item }}
   with_items: "{{ stopped_containers.stdout_lines }}"
 
 # get current running container with this image
 - name: look for running containers running {{ container_image }}
+  tags: deploy
   become: true
   script: findTagRunning.sh {{ container_image }} {{ kill_container_name | default('') }}
   register: old_containers_id
   changed_when: old_containers_id.stdout | length > 4
 
+- debug:
+    var: old_containers_id
+  tags: deploy
+
 # get latest image
 # tag will default to latest
 - name: pull down docker image {{ container_image }}:{{ container_tag }}
+  tags: deploy
   become: yes
   command: docker pull {{ container_image }}:{{ container_tag }}
 
 # get id of new image
 - name: get id of the docker image
   become: yes
+  tags: deploy
   when: container_name is undefined
   shell: >
     docker images
@@ -37,24 +47,31 @@
     awk '{print $3}'
   register: new_image_id
 
+- debug:
+    msg: "docker stop -t {{ stop_time }} {{ old_containers_id.stdout }}"
+
 # stop the old containers that were running this previously
 - name: stop old containers
   when: old_containers_id.changed
+  tags: deploy
   become: yes
   command: docker stop -t {{ stop_time }} {{ old_containers_id.stdout }}
 
 # remove the old containers that were running previously
 - name: remove old containers
   when: old_containers_id.changed
+  tags: deploy
   become: yes
   command: docker rm {{ old_containers_id.stdout }}
 
 - name: pause to allow for any odd conditions in system caching tables
+  tags: deploy
   when: pause_length_minutes is defined and old_containers_id.changed
   pause: minutes={{ pause_length_minutes }}
 
 # start our new container with options and args
 - name: start container
+  tags: deploy
   become: yes
   command: |
     docker run \

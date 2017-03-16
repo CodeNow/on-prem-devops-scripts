@@ -76,6 +76,7 @@ vault_aws_region: us-west-2
 vault_port: 65240
 vault_ssl_port: 65241
 
+stop_time: 5
 log_driver: syslog
 log_facility: local7
 app_log_dir: /docker/app-logs
@@ -98,12 +99,12 @@ max_navi_port: 65000
 redis_port: 65075
 redis_tls_port: 65076
 api_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
-vault_auth_token: ${REMOTE_VAULT_ROOT_TOKEN}
-vault_token_01: ${REMOTE_VAULT_TOKEN_1}
-vault_token_02: ${REMOTE_VAULT_TOKEN_2}
-vault_token_03: ${REMOTE_VAULT_TOKEN_3}
-vault_token_04: ${REMOTE_VAULT_TOKEN_4}
-vault_token_05: ${REMOTE_VAULT_TOKEN_5}
+vault_auth_token: 0bf58819-d4dd-3987-95c6-e98c393578da
+vault_token_01: 8d86f743e6060dbbb2c199fa2eeb73377b6d3579c819773ce55db588d35ac28f01
+vault_token_02: e66d688de27362bfbc4d226e823e1e5c49b540c3320c043cb0ec79aef6005a0302
+vault_token_03: d5bfe5de26570a53b87a3a64c76f0d253a7d3c11cd09f46912e0cfbcdaee356903
+vault_token_04: f60812ddeee41a30aae2a6c93531e7c720dfb20a905461122492c3b2b210fcfa04
+vault_token_05: c5da9f8e2ac072dcaed5bec37060f4be5317ced86f519147869e75a09efe939005
 github_domain: api.github.com
 is_github_enterprise: false
 github_protocol: https
