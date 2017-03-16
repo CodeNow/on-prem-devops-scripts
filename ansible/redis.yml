@@ -1,0 +1,7 @@
+---
+- hosts: redis
+  vars_files:
+    - "group_vars/alpha-redis.yml"
+  roles:
+  - { role: database }
+  - { role: container_kill_start }

@@ -85,7 +85,7 @@
     --restart={{ restart_policy | default('always') }} \
     {{ container_run_opts | trim }} \
     {{ container_image }}:{{ container_tag }} \
-    {{ container_run_args | trim }}
+    {{ container_run_args | default('') | trim }}
   register: new_container_id
   notify:
     - get new container ports

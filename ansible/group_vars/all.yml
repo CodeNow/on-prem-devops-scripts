@@ -1,7 +1,7 @@
 api_aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
 api_aws_secret_access_key: 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
-api_github_client_id: ${GITHUB_CLIEND_ID}
-api_github_client_secret: ${GITHUB_CLIENT_SECRET}
+api_github_client_id: 0e4722d3827dae2040c9
+api_github_client_secret: 378602417fe8dd4717550288a346e014237554f3
 api_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
 api_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
 api_mongo_database: hot-grizzly

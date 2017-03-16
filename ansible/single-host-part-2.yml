@@ -1,0 +1,4 @@
+# Databases
+- include: mongo.yml
+- include: rabbitmq.yml
+- include: redis.yml

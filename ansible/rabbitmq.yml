@@ -1,0 +1,8 @@
+---
+- hosts: rabbitmq
+  vars_files:
+    - "group_vars/alpha-rabbitmq.yml"
+  roles:
+  - { role: database }
+  - { role: rabbitmq }
+  - { role: container_kill_start }

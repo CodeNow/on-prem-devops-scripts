@@ -2,4 +2,5 @@
 *.pem
 *.csr
 *.srl
+.DS_Store
 ansible/roles/docker_client/scripts/files/certs/
