@@ -60,8 +60,8 @@ shiva_aws_instance_image_id: ami-30c74e50
 shiva_aws_instance_image_name: dock-ami-build-v.0.0.1
 shiva_aws_instance_type: t2.medium
 shiva_dock_pool_asg_name: hot-grizzly-asg-dock-pool
-shiva_aws_launch_configuration_name: hot-grizzly-lc-${AWS_LC_VERSION}
-shiva_aws_auto_scaling_group_subnets: ${AWS_ASG_SUBNET}
+shiva_aws_launch_configuration_name: hot-grizzly-lc-0.0.1
+shiva_aws_auto_scaling_group_subnets: subnet-9cb197f9
 shiva_aws_auto_scaling_group_max: 29
 shiva_aws_auto_scaling_group_prefix: asg-hot-grizzly-
 
