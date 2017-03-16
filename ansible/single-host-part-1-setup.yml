@@ -1,0 +1,3 @@
+ - include: consul-values.yml -e write_values="true" # Only run the first time
+ - include: consul-services.yml # Only run the first time
+ - include: vault-values.yml -e write_values="true"
