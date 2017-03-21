@@ -1,12 +1,7 @@
 ---
-- hosts: mongo-navi
-- hosts: rabbitmq
-- hosts: consul
-
 - hosts: link
   vars_files:
     - "group_vars/alpha-link.yml"
   roles:
-  - { role: notify, tags: "notify" }
-  - { role: builder, tags: "build" }
+  - { role: logs }
   - { role: container_kill_start }

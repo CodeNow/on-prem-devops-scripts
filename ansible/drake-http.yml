@@ -1,9 +1,11 @@
 ---
+- hosts: redis
+- hosts: rabbitmq
 - hosts: consul
 
-- hosts: api
+- hosts: drake
   vars_files:
-  - group_vars/alpha-registrator.yml
+    - group_vars/alpha-drake-http.yml
   roles:
   - role: logs
   - role: container_kill_start

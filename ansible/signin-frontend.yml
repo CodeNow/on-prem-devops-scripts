@@ -1,0 +1,6 @@
+---
+- hosts: api # host doesn't matter. Image pushes to S3
+  vars_files:
+    - group_vars/alpha-signin-frontend.yml
+  roles:
+  - role: container_kill_start

@@ -24,13 +24,11 @@
 - name: create chained cert
   tags: [ configure_proxy, certs ]
   become: true
-  when: add_certs.changed
-  shell: >
-    cat
-    /etc/ssl/certs/{{ domain }}/cert.pem
-    /etc/ssl/certs/{{ domain }}/ca.pem
-    >
-    /etc/ssl/certs/{{ domain }}/chained.pem
+  when: true
+  shell: |
+    cat /etc/ssl/certs/{{ domain }}/cert.pem > /etc/ssl/certs/{{ domain }}/chained.pem
+    echo "" >> /etc/ssl/certs/{{ domain }}/chained.pem # Add newline
+    cat /etc/ssl/certs/{{ domain }}/ca.pem >> /etc/ssl/certs/{{ domain }}/chained.pem
 
 - name: create dhparam.pem
   tags: [ configure_proxy, certs ]
@@ -79,6 +77,13 @@
   template:
     src: registry.tmpl
     dest: /etc/nginx/other-sites-enabled/registry.conf
+
+- name: put test template in place
+  tags: [ configure_proxy, configure_files ]
+  become: yes
+  template:
+    src: test.tmpl
+    dest: /etc/nginx/other-sites-enabled/test.conf
 
 - name: put api template in place
   tags: [ configure_proxy, configure_files ]

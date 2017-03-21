@@ -1,0 +1,9 @@
+---
+- hosts: api
+  vars_files:
+    - group_vars/alpha-api-base.yml
+    - group_vars/alpha-api.yml
+  roles:
+    - role: logs
+    - role: container_kill_start
+      number_of_containers: "{{ api_number_of_containers | default(ansible_processor_cores) }}"

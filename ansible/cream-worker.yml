@@ -1,9 +1,10 @@
 ---
+- hosts: rabbitmq
 - hosts: consul
 
-- hosts: api
+- hosts: cream
   vars_files:
-  - group_vars/alpha-registrator.yml
+    - group_vars/alpha-cream-worker.yml
   roles:
   - role: logs
   - role: container_kill_start

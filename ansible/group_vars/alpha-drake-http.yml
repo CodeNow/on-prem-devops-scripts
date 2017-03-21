@@ -14,9 +14,7 @@ is_redis_update_required: 'yes'
 # for container settings
 container_envs: >
   -e API_URL={{ api_url }}
-  -e DATADOG_HOST={{ datadog_host_address }}
-  -e DATADOG_PORT={{ datadog_port }}
-  -e DATADOG_SECRET=I_solemnly_swear_that_I_am_up_to_no_good
+  -e DATADOG_SECRET=datadog-secret
   -e NODE_ENV={{ node_env }}
   -e PORT={{ hosted_ports[0] }}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
@@ -28,7 +26,7 @@ container_envs: >
 container_run_opts: >
   -h {{ name }}
   -d
-  -P
+  -p {{ drake_port }}
   {{container_envs}}
 
 npm_start_command: run start-http

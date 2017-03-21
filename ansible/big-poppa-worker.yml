@@ -1,11 +1,12 @@
 ---
+- hosts: rabbitmq
 - hosts: consul
 - hosts: mongodb
-- hosts: rabbitmq
+- hosts: github-varnish
 
-- hosts: pheidi
+- hosts: big-poppa
   vars_files:
-    - group_vars/alpha-pheidi.yml
+    - group_vars/alpha-big-poppa-worker.yml
   roles:
   - { role: logs }
   - { role: container_kill_start }

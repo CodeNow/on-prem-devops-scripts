@@ -1,7 +1,5 @@
 ---
-- hosts: consul
-
-- hosts: "{{ host }}"
+- hosts: "ingress"
   vars_files:
   - group_vars/{{ var_file }}
   - group_vars/alpha-consul-template-updater.yml

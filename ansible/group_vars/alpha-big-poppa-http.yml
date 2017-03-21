@@ -21,12 +21,10 @@ dockerfile_pre_install_commands: [
 
 # for container settings
 container_envs: >
-  -e DATADOG_HOST={{ datadog_host_address }}
-  -e DATADOG_PORT={{ datadog_port }}
   -e GITHUB_TOKEN={{ big_poppa_github_token }}
+  -e INTERCOM_API_KEY={{ big_poppa_intercom_key | default('undefined') }}
+  -e INTERCOM_APP_ID={{ big_poppa_intercom_id | default('undefined') }}
   -e PORT={{ hosted_ports[0] }}
-  {% if big_poppa_intercom_id is defined %} -e INTERCOM_APP_ID={{ big_poppa_intercom_id | default('undefined') }} {% endif %}
-  {% if big_poppa_intercom_key is defined %} -e INTERCOM_APP_ID={{ big_poppa_intercom_key | default('undefined') }} {% endif %}
   -e NODE_ENV={{ node_env }}
   -e PGUSER={{ big_poppa_pg_user }}
   -e PGPASSWORD={{ big_poppa_pg_pass }}
@@ -41,15 +39,11 @@ container_envs: >
   -e RABBITMQ_PORT={{ rabbit_port }}
   -e RABBITMQ_USERNAME={{ rabbit_username }}
   {% if big_poppa_http_rollbar_token is defined %} -e ROLLBAR_KEY={{ big_poppa_http_rollbar_token }} {% endif %}
-  -e MONGO=mongodb://{{ big_poppa_mongo_auth }}@{{ mongo_hosts }}/{{ big_poppa_mongo_database }}
+  -e MONGO=mongodb://{{ big_poppa_mongo_auth }}@{{ mongo_hosts }}/{{ api_mongo_database }}
   -e MONGO_REPLSET_NAME={{ big_poppa_mongo_replset_name }}
   -e GITHUB_VARNISH_HOST={{ github_varnish_host }}
   -e GITHUB_VARNISH_PORT={{ github_varnish_port }}
   -e GITHUB_PROTOCOL=http
-  {% if big_poppa_new_relic_app_name is defined %} -e NEW_RELIC_APP_NAME={{ big_poppa_new_relic_app_name }} {% endif %}
-  {% if big_poppa_new_relic_app_name is defined %} -e NEW_RELIC_LICENSE_KEY={{ new_relic_license_key }} {% endif %}
-  {% if big_poppa_new_relic_app_name is defined %} -e NEW_RELIC_LOG_LEVEL=fatal {% endif %}
-  {% if big_poppa_new_relic_app_name is defined %} -e NEW_RELIC_NO_CONFIG_FILE=true {% endif %}
   -e STRIPE_API_KEY={{ cream_stripe_secret_key }}
   -e STRIPE_PUBLISHABLE_KEY={{ cream_stripe_publishable_key }}
 

@@ -1,9 +1,4 @@
 ---
-- hosts: rabbitmq
-- hosts: mongodb
-- hosts: consul
-- hosts: swarm-manager
-- hosts: big-poppa
 - hosts: khronos
   vars_files:
     - group_vars/alpha-khronos.yml

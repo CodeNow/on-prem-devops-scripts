@@ -9,8 +9,7 @@ npm_version: 2
 # for container settings
 container_envs: >
   -e API_URL={{ api_url }}
-  -e DATADOG_HOST={{ datadog_host_address }}
-  -e DATADOG_PORT={{ datadog_port }}
+  -e DATADOG_SECRET=datadog-secret
   -e LOG_LEVEL=info
   -e NODE_ENV={{ node_env }}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}

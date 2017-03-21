@@ -1,3 +1,7 @@
+- debug:
+    var: npm_start_command
+  tags: deploy
+
 - name: look for stopped {{ container_image }} containers
   tags: deploy
   become: yes
@@ -85,8 +89,5 @@
     --restart={{ restart_policy | default('always') }} \
     {{ container_run_opts | trim }} \
     {{ container_image }}:{{ container_tag }} \
-    {{ container_run_args | default('') | trim }}
+    npm {{ npm_start_command | default('start') }} {{ container_run_args | default('') | trim }}
   register: new_container_id
-  notify:
-    - get new container ports
-    - update redis key

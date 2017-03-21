@@ -1,23 +1,8 @@
 ---
-- hosts: redis
-- hosts: detention
-- hosts: mongo-navi
-- hosts: rabbitmq
-- hosts: consul
-
 - hosts: navi
   vars_files:
     - group_vars/alpha-navi.yml
   roles:
-  - role: notify
-    rollbar_token: "{{ navi_rollbar_token }}"
-    tags: [ notify ]
-
-  - role: builder
-    tags: [ build ]
-
-  - role: tls-server-ca
-    ca_dest: "{{ redis_ca_cert_path }}"
-
-  - role: container_start
-    number_of_containers: "{{ navi_number_of_containers | default(ansible_processor_cores) }}"
+  - role: logs
+  - role: container_kill_start
+    number_of_containers: "{{ ansible_processor_cores }}"

@@ -27,8 +27,6 @@ api_base_container_envs: >-
   -e DOCKER_IMAGE_BUILDER_CACHE=/git-cache
   -e DOCKER_IMAGE_BUILDER_LAYER_CACHE=/layer-cache
   -e CREAM_HOST=http://{{ cream_host_address }}:{{ cream_port }}
-  -e DATADOG_HOST={{ datadog_host_address }}
-  -e DATADOG_PORT={{ datadog_port }}
   -e DOCKER_BUILD_LINE_TIMEOUT_MS=3600000
   -e DOMAIN={{ domain }}
   -e ENABLE_AUTOFORK_ON_BRANCH_PUSH=true
@@ -51,17 +49,15 @@ api_base_container_envs: >-
   -e GITHUB_PROTOCOL=http
   -e HELLO_RUNNABLE_GITHUB_TOKEN={{ api_hello_runnable_github_token }}
   -e KRAIN_PORT={{ krain_port }}
+  -e LOG_LEVEL=trace
   {% if api_mixpanel_app_id is defined %} -e MIXPANEL_APP_ID={{ api_mixpanel_app_id }} {% endif %}
   -e MONGO_REPLSET_NAME={{ api_mongo_replset_name }}
   -e MONGO=mongodb://{{ api_mongo_auth }}@{{ mongo_hosts }}/{{ api_mongo_database }}
   -e NAVI_HOST=http://{{ navi_host_address }}:{{ navi_http_port }}
-  {% if api_new_relic_app_name is defined %} -e NEW_RELIC_APP_NAME={{ api_new_relic_app_name }} {% endif %}
-  {% if api_new_relic_app_name is defined %} -e NEW_RELIC_LICENSE_KEY={{ new_relic_license_key }} {% endif %}
-  {% if api_new_relic_app_name is defined %} -e NEW_RELIC_LOG_LEVEL=fatal {% endif %}
-  {% if api_new_relic_app_name is defined %} -e NEW_RELIC_NO_CONFIG_FILE=true {% endif %}
   -e NODE_ENV={{ node_env }}
   -e NUM_WORKERS=1
   -e OPTIMUS_HOST=http://{{ optimus_hostname }}
+  -e PORT={{ api_port }}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
   -e RABBITMQ_PASSWORD={{ rabbit_password }}
   -e RABBITMQ_PORT={{ rabbit_port }}
@@ -72,7 +68,5 @@ api_base_container_envs: >-
   -e SENDGRID_KEY={{ sendgrid_key }}
   -e SWARM_HOST=http://{{ swarm_host_address }}:{{ swarm_master_port }}
   -e USER_CONTENT_DOMAIN={{ user_content_domain }}
-  {% if api_intercom_app_id is defined %} -e INTERCOM_APP_ID={{ api_intercom_app_id }} {% endif %}
-  {% if api_intercom_api_key is defined %} -e INTERCOM_API_KEY={{ api_intercom_api_key }} {% endif %}
   -e VALID_REDIR_TLDS=runnable.io,runnableapp.com
   -e WEB_URL=https://app.{{ domain }}

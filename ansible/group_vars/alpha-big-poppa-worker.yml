@@ -20,12 +20,10 @@ dockerfile_pre_install_commands: [
 
 # for container settings
 container_envs: >
-  -e DATADOG_HOST={{ datadog_host_address }}
-  -e DATADOG_PORT={{ datadog_port }}
   -e GITHUB_TOKEN={{ big_poppa_github_token }}
+  -e INTERCOM_API_KEY={{ big_poppa_intercom_key | default('undefined') }}
+  -e INTERCOM_APP_ID={{ big_poppa_intercom_id | default('undefined') }}
   -e NODE_ENV={{ node_env }}
-  {% if big_poppa_intercom_id is defined %} -e INTERCOM_APP_ID={{ big_poppa_intercom_id | default('undefined') }} {% endif %}
-  {% if big_poppa_intercom_key is defined %} -e INTERCOM_APP_ID={{ big_poppa_intercom_key | default('undefined') }} {% endif %}
   -e POSTGRES_CONNECT_STRING=postgres://{{ big_poppa_pg_user }}:{{ big_poppa_pg_pass }}@{{ big_poppa_pg_host }}/{{ big_poppa_pg_database }}
   -e POSTGRES_POOL_MIN={{ big_poppa_pg_pool_min }}
   -e POSTGRES_POOL_MAX={{ big_poppa_pg_pool_max }}
@@ -34,7 +32,7 @@ container_envs: >
   -e RABBITMQ_PORT={{ rabbit_port }}
   -e RABBITMQ_USERNAME={{ rabbit_username }}
   {% if big_poppa_http_rollbar_token is defined %} -e ROLLBAR_KEY={{ big_poppa_http_rollbar_token }} {% endif %}
-  -e MONGO=mongodb://{{ mongo_hosts }}/{{ big_poppa_mongo_database }}
+  -e MONGO=mongodb://{{ big_poppa_mongo_auth }}@{{ mongo_hosts }}/{{ api_mongo_database }}
   -e MONGO_REPLSET_NAME={{ big_poppa_mongo_replset_name }}
   -e GITHUB_VARNISH_HOST={{ github_varnish_host }}
   -e GITHUB_VARNISH_PORT={{ github_varnish_port }}
