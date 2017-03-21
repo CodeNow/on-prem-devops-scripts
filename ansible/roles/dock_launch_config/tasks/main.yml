@@ -41,10 +41,12 @@
     dest=~/dock.sh
   vars:
     tokens: "{{ vault_tokens }}"
+    is_dock_pool: false
 
 - name: Generate dock script
   template:
-    src=dock-pool.tmpl
+    src=dock.tmpl
     dest=~/dock-pool.sh
   vars:
     tokens: "{{ vault_tokens }}"
+    is_dock_pool: true
