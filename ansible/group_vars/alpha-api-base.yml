@@ -37,7 +37,7 @@ api_base_container_envs: >-
   -e GITHUB_CALLBACK_URL={{ api_url }}/auth/github/callback
   -e GITHUB_CLIENT_ID={{ api_github_client_id }}
   -e GITHUB_CLIENT_SECRET={{ api_github_client_secret }}
-  -e GITHUB_DEPLOY_KEY_TITLE=Runnable-io
+  -e GITHUB_DEPLOY_KEY_TITLE={{ api_github_deploy_key_title }}
   -e GITHUB_URL={{ github_protocol }}://{{ github_domain }}
   -e GITHUB_API_URL={{ github_api_url }}
   -e IS_GITHUB_ENTERPRISE={{ is_github_enterprise }}

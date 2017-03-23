@@ -6,8 +6,10 @@ api_github_client_secret: 378602417fe8dd4717550288a346e014237554f3
 api_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
 api_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
 api_mongo_database: api
+api_github_deploy_key_title: Runnable-io-hot-grizzly
 api_mongo_replset_name: hot-grizzly-rs0
 api_s3_context_bucket: runnable.context.resources.hot-grizzly
+api_s3_log_bucket: hot-grizzly.container-logs
 api_hostname: api.{{ domain }}
 api_url: https://{{ api_hostname }}
 api_socket_server_hostname: apisock.{{ domain }}
