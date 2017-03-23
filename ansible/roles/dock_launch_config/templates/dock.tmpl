@@ -20,6 +20,12 @@ mkdir -p /docker/app-logs/
 echo {{ krain_base64['stdout'] }} | base64 --decode > /etc/init/krain.conf
 echo {{ charon_base64['stdout'] }} | base64 --decode > /etc/init/charon.conf
 
+# Add Certs
+mkdir -p /etc/ssl/docker/
+rm /etc/ssl/docker/*
+echo {{ ca_pem_base64['stdout'] }} | base64 --decode > /etc/ssl/docker/ca.pem
+echo {{ ca_key_pem_base64['stdout'] }} | base64 --decode > /etc/ssl/docker/ca-key.pem
+
 # Start services
 {% if is_dock_pool %}
 start amazon-ssm-agent
@@ -27,5 +33,5 @@ start amazon-ssm-agent
 service krain start
 service charon start
 {% if not is_dock_pool %}
-# CONSUL_HOSTNAME={{ groups['consul'][0] }} CONSUL_PORT={{ consul_https_port }} VAULT_PORT={{ vault_port }} bash /opt/runnable/dock-init/init.sh | tee /var/log/user-script-dock-init.log
+CONSUL_HOSTNAME={{ groups['consul'][0] }} CONSUL_PORT={{ consul_https_port }} VAULT_PORT={{ vault_port }} bash /opt/runnable/dock-init/init.sh | tee /var/log/user-script-dock-init.log
 {% endif %}
