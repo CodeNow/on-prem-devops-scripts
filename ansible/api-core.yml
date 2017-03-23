@@ -4,6 +4,7 @@
     - group_vars/alpha-api-base.yml
     - group_vars/alpha-api.yml
   roles:
+    - { role: docker_client, tags: "docker_client" }
     - role: logs
     - role: container_kill_start
       number_of_containers: "{{ api_number_of_containers | default(ansible_processor_cores) }}"

@@ -3,6 +3,7 @@
   vars_files:
     - group_vars/alpha-khronos.yml
   roles:
+  - { role: docker_client, tags: "docker_client" }
   - { role: logs }
   - { role: khronos, tags: [ deploy ] }
   - { role: container_kill_start }
