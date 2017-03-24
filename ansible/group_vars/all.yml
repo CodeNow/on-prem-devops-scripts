@@ -43,6 +43,8 @@ cream_stripe_secret_key: sk_test_4De8Zdkfcyb29swkMmjZUMRh
 cream_stripe_publishable_key: pk_test_sHr5tQaPtgwiE2cpW6dQkzi8
 cream_port: 8899
 
+charon_port: 53
+
 drake_hostname: drake.{{ domain }}
 drake_port: 80
 
@@ -126,7 +128,7 @@ rabbit_host_address: "{{ hostvars[groups['rabbitmq'][0]]['ansible_default_ipv4']
 rabbit_port: 54321
 
 redis_host_address: "{{ hostvars[groups['redis'][0]]['ansible_default_ipv4']['address'] }}"
-redis_port: 6379
+redis_port: 65251
 
 swarm_master_port: 65250
 swarm_host_address: "{{ hostvars[groups['swarm-manager'][0]]['ansible_default_ipv4']['address'] }}"
