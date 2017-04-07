@@ -57,7 +57,7 @@
 
 - name: Generate dock script
   template:
-    src=dock.tmpl
+    src=init.tmpl
     dest=~/dock.sh
   vars:
     tokens: "{{ vault_tokens }}"
@@ -65,7 +65,7 @@
 
 - name: Generate dock script
   template:
-    src=dock.tmpl
+    src=init.tmpl
     dest=~/dock-pool.sh
   vars:
     tokens: "{{ vault_tokens }}"
