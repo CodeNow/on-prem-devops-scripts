@@ -4,7 +4,7 @@ if [[ $1 = '' ]]; then
   echo 'script requires a client name'
   exit 1
 fi
-CLIENT=./files/certs/$1
+CLIENT=./certs/$1
 
 echo 'WARN: hard coded alpha-api-old gamma-services and beta-services for SWARM'
 if [[ $2 = '' ]]; then

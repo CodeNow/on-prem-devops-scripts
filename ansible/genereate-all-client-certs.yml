@@ -4,8 +4,8 @@
   tasks:
   - name: generate client certs
     shell:
-      cmd: ./genClientCert.sh "{{ item }}" "{{ groups['main'][0] }}"
-      chdir: ./roles/docker_client/scripts/
+      cmd: ./roles/docker_client/scripts/genClientCert.sh "{{ item }}" "{{ groups['main'][0] }}"
+      chdir: ./
     with_items:
       - "api"
       - "api-core"
