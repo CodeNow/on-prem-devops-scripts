@@ -1,19 +1,19 @@
 api_number_of_containers: 1
-api_aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
-api_aws_secret_access_key: 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
-api_github_client_id: 0e4722d3827dae2040c9
-api_github_client_secret: 378602417fe8dd4717550288a346e014237554f3
-api_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
-api_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
+api_aws_access_key_id: ${AWS_ACCESS_KEY}
+api_aws_secret_access_key: ${AWS_SECRET_KEY}
+api_github_client_id: ${GITHUB_APPLICATION_CLIENT_ID}
+api_github_client_secret: ${GITHBUB_APPLICATION_CLIENT_SECRET}
+api_github_deploy_keys_bucket: runnable.deploykeys.${ENV}
+api_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
 api_mongo_database: api
-api_github_deploy_key_title: Runnable-io-hot-grizzly
-api_mongo_replset_name: hot-grizzly-rs0
-api_s3_context_bucket: runnable.context.resources.hot-grizzly
-api_s3_log_bucket: hot-grizzly.container-logs
+api_github_deploy_key_title: Runnable-io-${ENV}
+api_mongo_replset_name: ${ENV}-rs0
+api_s3_context_bucket: runnable.context.resources.${ENV}
+api_s3_log_bucket: ${ENV}.container-logs
 api_hostname: api.{{ domain }}
 api_url: https://{{ api_hostname }}
 api_socket_server_hostname: apisock.{{ domain }}
-sendgrid_key: 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
+sendgrid_key: ${SENDGRID_KEY}
 api_port: 80
 
 krain_port: 3100
@@ -23,22 +23,22 @@ detention_hostname: detention.{{ domain }}
 detention_port: 9123
 
 big_poppa_host_address: "{{ hostvars[groups['big-poppa'][0]]['ansible_default_ipv4']['address'] }}"
-big_poppa_pg_pass: 7e60015444144abdbe7124813b2ac9fc
-big_poppa_pg_host: hot-grizzly.cnksgdqarobf.us-west-2.rds.amazonaws.com:5432
+big_poppa_pg_pass: ${POSTGRES_PASSWORD}
+big_poppa_pg_host: ${ENV}.cnksgdqarobf.${AWS_REGION}.rds.amazonaws.com:5432
 big_poppa_pg_port: 5432
-big_poppa_pg_user: a6c6898ffb866437
+big_poppa_pg_user: ${POSTGRES_PASSORD}
 big_poppa_pg_database: big_poppa
-big_poppa_github_token: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
-big_poppa_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
-big_poppa_mongo_replset_name: hot-grizzly-rs0
+big_poppa_github_token: ${GITHUB_TOKEN}
+big_poppa_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
+big_poppa_mongo_replset_name: ${ENV}-rs0
 big_poppa_pg_pool_min: 10
 big_poppa_pg_pool_max: 20
 big_poppa_port: 7788
-big_poppa_intercom_key: 92d281df5653eb72f8f4b322cf0689be893d4965
-big_poppa_intercom_id: xs5g95pd
+big_poppa_intercom_key: ${INTERCOM_KEY}
+big_poppa_intercom_id: ${INTERCOM_ID}
 
 cream_host_address: "{{ hostvars[groups['cream'][0]]['ansible_default_ipv4']['address'] }}"
-cream_hello_runnable_github_token: 39a526280f60f2034771b08db05becfac2a6b73a # Hot Grizzly 2
+cream_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
 cream_stripe_secret_key: sk_test_4De8Zdkfcyb29swkMmjZUMRh
 cream_stripe_publishable_key: pk_test_sHr5tQaPtgwiE2cpW6dQkzi8
 cream_port: 8899
@@ -48,67 +48,67 @@ charon_port: 53
 drake_hostname: drake.{{ domain }}
 drake_port: 80
 
-khronos_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
-khronos_mongo_replset_name: hot-grizzly
+khronos_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
+khronos_mongo_replset_name: ${ENV}
 
 navi_host_address: "{{ hostvars[groups['navi'][0]]['ansible_default_ipv4']['address'] }}"
 navi_http_port: 3567
-navi_cookie_secret: 966b064bad58465e80e6333482af77f9
+navi_cookie_secret: ${NAVI_SECRET}
 navi_proxy_port: 65100
 navi_proxy_ssl_port: 65101
 navi_mongo_database: navi
-navi_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
+navi_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
 
-link_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
+link_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
 
 optimus_hostname: optimus.{{ domain }}
-optimus_aws_access_id: AKIAJZLLEJFE7KDUVVVQ
-optimus_aws_secret_id: uYjxW3/ndlFvVxLmJvvVOBbReL8OfUbPbDjkN1RZ
-optimus_github_deploy_keys_bucket: runnable.deploykeys.hot-grizzly
+optimus_aws_access_id: ${AWS_ACCESS_KEY}
+optimus_aws_secret_id: ${AWS_SECRET_KEY}
+optimus_github_deploy_keys_bucket: runnable.deploykeys.${ENV}
 optimus_port: 80
 
-pheidi_mongo_auth: 25f39cf14e374870af2a86a12000263a:5d3159d577544f5d896bdf4ae3b14643
+pheidi_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
 pheidi_mongo_replset_name: api
-pheidi_runnabot_tokens: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
-pheidi_email_github_token: 6bd3f5155255f5f5d04f2787bb05cf37dbf1e819
+pheidi_runnabot_tokens: ${GITHUB_TOKEN}
+pheidi_email_github_token: ${GITHUB_TOKEN}
 
-registry_s3_access_key: AKIAJZLLEJFE7KDUVVVQ
-registry_s3_secret_key: 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
-registry_s3_bucket: runnableimages.hot-grizzly
-registry_s3_region: us-west-2
+registry_s3_access_key: ${AWS_ACCESS_KEY}
+registry_s3_secret_key: ${AWS_SECRET_KEY}
+registry_s3_bucket: runnableimages.${ENV}
+registry_s3_region: ${AWS_REGION}
 
-signin_frontend_s3_region: us-west-2
+signin_frontend_s3_region: ${AWS_REGION}
 web_url: https://app.{{ domain }}
 marketing_url: https://{{ domain }}
 mixpanel_url: https://mixpanel.{{ domain }}
-web_aws_bucket_region: us-west-2
+web_aws_bucket_region: ${AWS_REGION}
 
-aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
-aws_secret_access_key: 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
-shiva_aws_region: us-west-2
-shiva_dock_security_groups: sg-577a0d33
-shiva_ssh_key_name: gamma-key
+aws_access_key_id: ${AWS_ACCESS_KEY}
+aws_secret_access_key: ${AWS_SECRET_KEY}
+shiva_aws_region: ${AWS_REGION}
+shiva_dock_security_groups: ${AWS_DOCK_SECURITY_GROUP}
+shiva_ssh_key_name: ${MAIN_HOST_ACCESS_KEY}
 shiva_aws_instance_image_id: ami-30c74e50
 shiva_aws_instance_image_name: dock-ami-build-v.0.0.1
 shiva_aws_instance_type: t2.medium
-shiva_dock_pool_asg_name: hot-grizzly-asg-dock-pool
-shiva_aws_launch_configuration_name: hot-grizzly-dock-lc-0.0.1
-shiva_aws_auto_scaling_group_subnets: subnet-9cb197f9
+shiva_dock_pool_asg_name: ${ENV}-asg-dock-pool
+shiva_aws_launch_configuration_name: ${ENV}-dock-lc-0.0.1
+shiva_aws_auto_scaling_group_subnets: ${AWS_DOCK_SUBNET}
 shiva_aws_auto_scaling_group_max: 29
-shiva_aws_auto_scaling_group_prefix: asg-hot-grizzly-
+shiva_aws_auto_scaling_group_prefix: asg-${ENV}-
 
-aws_access_key: AKIAJZLLEJFE7KDUVVVQ
-aws_secret_key: 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
-environment_name: hot-grizzly
+aws_access_key: ${AWS_ACCESS_KEY}
+aws_secret_key: ${AWS_SECRET_KEY}
+environment_name: ${ENV}
 
 consul_host_address: "{{ hostvars[groups['consul'][0]]['ansible_default_ipv4']['address'] }}"
 consul_https_port: 65201
 consul_api_port: 65201
 
-vault_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
-vault_aws_access_key_id: AKIAJZLLEJFE7KDUVVVQ
-vault_aws_secret_key: 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
-vault_aws_region: us-west-2
+vault_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
+vault_aws_access_key_id: ${AWS_ACCESS_KEY}
+vault_aws_secret_key: ${AWS_SECRET_KEY}
+vault_aws_region: ${AWS_REGION}
 vault_port: 65240
 vault_ssl_port: 65241
 
@@ -117,13 +117,13 @@ log_driver: syslog
 log_facility: local7
 app_log_dir: /docker/app-logs
 
-pg_user: a6c6898ffb866437
-pg_pass: 7e60015444144abdbe7124813b2ac9fc
-pg_host: big-poppa.cnksgdqarobf.us-west-2.rds.amazonaws.com:5432
+pg_user: ${POSTGRES_PASSORD}
+pg_pass: ${POSTGRES_PASSWORD}
+pg_host: ${POSTGRES_HOST}:5432
 pg_database: astral
 
-rabbit_username: e50d3d3e86514ca29a96b951f69a1daa
-rabbit_password: dfaf1bd173e74f14823c63437979db0e
+rabbit_username: ${RABBIT_USERNAME}
+rabbit_password: ${RABBIT_PASSWORD}
 rabbit_host_address: "{{ hostvars[groups['rabbitmq'][0]]['ansible_default_ipv4']['address'] }}"
 rabbit_port: 54321
 
@@ -150,18 +150,18 @@ is_github_enterprise: false
 github_protocol: https
 github_api_url: https://api.github.com
 
-domain: runnablecloud.com
-node_env: hot-grizzly
+domain: ${DOMAIN}
+node_env: ${ENV}
 registry_port: 65001
-user_content_domain: runnabae.com
+user_content_domain: ${USER_CONTENT_DOMAIN}
 max_navi_port: 65000
 redis_tls_port: 65076
-api_hello_runnable_github_token: 6ea33eb0b734f3db30ed72a870a2376ff10d2274
-vault_auth_token: 0bf58819-d4dd-3987-95c6-e98c393578da
-vault_token_01: 8d86f743e6060dbbb2c199fa2eeb73377b6d3579c819773ce55db588d35ac28f01
-vault_token_02: e66d688de27362bfbc4d226e823e1e5c49b540c3320c043cb0ec79aef6005a0302
-vault_token_03: d5bfe5de26570a53b87a3a64c76f0d253a7d3c11cd09f46912e0cfbcdaee356903
-vault_token_04: f60812ddeee41a30aae2a6c93531e7c720dfb20a905461122492c3b2b210fcfa04
-vault_token_05: c5da9f8e2ac072dcaed5bec37060f4be5317ced86f519147869e75a09efe939005
+api_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
+vault_auth_token: ${VAULT_AUTH_TOKEN}
+vault_token_01: ${VAULT_TOKEN_1}
+vault_token_02: ${VAULT_TOKEN_2}
+vault_token_03: ${VAULT_TOKEN_3}
+vault_token_04: ${VAULT_TOKEN_2}
+vault_token_05: ${VAULT_TOKEN_2}
 proxy_container_image: runnable/sticky-nginx
 proxy_container_image_version: v1.8.1
