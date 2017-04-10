@@ -1,19 +1,52 @@
+## Custom Vars
+
+aws_access_key_id:
+aws_secret_access_key:
+github_client_id:
+github_client_secret:
+mongo_username:
+mongo_pasword:
+enviroment:
+sendgrid_key:
+rabbit_username:
+rabbit_password:
+postgres_host:
+postgres_user:
+postgres_password:
+domain:
+user_content_domain:
+github_token:
+intercom_id:
+intercom_key:
+vault_auth_token:
+vault_token_01:
+vault_token_02:
+vault_token_03:
+vault_token_04:
+vault_token_05:
+hello_runnable_github_token:
+navi_cookie_secret:
+aws_dock_security_group:
+main_host_access_key:
+aws_dock_subnet:
+
+## Defaults
+
 api_number_of_containers: 1
-api_aws_access_key_id: ${AWS_ACCESS_KEY}
-api_aws_secret_access_key: ${AWS_SECRET_KEY}
-api_github_client_id: ${GITHUB_APPLICATION_CLIENT_ID}
-api_github_client_secret: ${GITHBUB_APPLICATION_CLIENT_SECRET}
-api_github_deploy_keys_bucket: runnable.deploykeys.${ENV}
-api_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
+api_aws_access_key_id: "{{ aws_access_key_id }}"
+api_aws_secret_access_key: "{{ aws_secret_key }}"
+api_github_client_id: "{{ github_client_id }}"
+api_github_client_secret: "{{ github_client_secret }}"
+api_github_deploy_keys_bucket: "runnable.deploykeys.{{ enviroment }}"
+api_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 api_mongo_database: api
-api_github_deploy_key_title: Runnable-io-${ENV}
-api_mongo_replset_name: ${ENV}-rs0
-api_s3_context_bucket: runnable.context.resources.${ENV}
-api_s3_log_bucket: ${ENV}.container-logs
+api_github_deploy_key_title: Runnable-io-{{ enviroment }}
+api_mongo_replset_name: "{{ enviroment }}-rs0"
+api_s3_context_bucket: runnable.context.resources.{{ enviroment }}
+api_s3_log_bucket: "{{ enviroment }}.container-logs"
 api_hostname: api.{{ domain }}
 api_url: https://{{ api_hostname }}
 api_socket_server_hostname: apisock.{{ domain }}
-sendgrid_key: ${SENDGRID_KEY}
 api_port: 80
 
 krain_port: 3100
@@ -23,22 +56,22 @@ detention_hostname: detention.{{ domain }}
 detention_port: 9123
 
 big_poppa_host_address: "{{ hostvars[groups['big-poppa'][0]]['ansible_default_ipv4']['address'] }}"
-big_poppa_pg_pass: ${POSTGRES_PASSWORD}
-big_poppa_pg_host: ${ENV}.cnksgdqarobf.${AWS_REGION}.rds.amazonaws.com:5432
+big_poppa_pg_pass: "{{ postgres_password }}"
+big_poppa_pg_host: "{{ postgres_host }}"
 big_poppa_pg_port: 5432
-big_poppa_pg_user: ${POSTGRES_PASSORD}
+big_poppa_pg_user: "{{ postgres_user }}"
 big_poppa_pg_database: big_poppa
-big_poppa_github_token: ${GITHUB_TOKEN}
-big_poppa_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
-big_poppa_mongo_replset_name: ${ENV}-rs0
+big_poppa_github_token: "{{ github_token }}"
+big_poppa_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
+big_poppa_mongo_replset_name: "{{ enviroment }}-rs0"
 big_poppa_pg_pool_min: 10
 big_poppa_pg_pool_max: 20
 big_poppa_port: 7788
-big_poppa_intercom_key: ${INTERCOM_KEY}
-big_poppa_intercom_id: ${INTERCOM_ID}
+big_poppa_intercom_key: "{{ intercom_key }}"
+big_poppa_intercom_id: "{{ intercom_id }}"
 
 cream_host_address: "{{ hostvars[groups['cream'][0]]['ansible_default_ipv4']['address'] }}"
-cream_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
+cream_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
 cream_stripe_secret_key: sk_test_4De8Zdkfcyb29swkMmjZUMRh
 cream_stripe_publishable_key: pk_test_sHr5tQaPtgwiE2cpW6dQkzi8
 cream_port: 8899
@@ -48,67 +81,66 @@ charon_port: 53
 drake_hostname: drake.{{ domain }}
 drake_port: 80
 
-khronos_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
-khronos_mongo_replset_name: ${ENV}
+khronos_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
+khronos_mongo_replset_name: "{{ enviroment }}"
 
 navi_host_address: "{{ hostvars[groups['navi'][0]]['ansible_default_ipv4']['address'] }}"
 navi_http_port: 3567
-navi_cookie_secret: ${NAVI_SECRET}
 navi_proxy_port: 65100
 navi_proxy_ssl_port: 65101
 navi_mongo_database: navi
-navi_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
+navi_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 
-link_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
+link_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
 
 optimus_hostname: optimus.{{ domain }}
-optimus_aws_access_id: ${AWS_ACCESS_KEY}
-optimus_aws_secret_id: ${AWS_SECRET_KEY}
-optimus_github_deploy_keys_bucket: runnable.deploykeys.${ENV}
+optimus_aws_access_id: "{{ aws_access_key_id }}"
+optimus_aws_secret_id: "{{ aws_secret_key }}"
+optimus_github_deploy_keys_bucket: runnable.deploykeys.{{ enviroment }}
 optimus_port: 80
 
-pheidi_mongo_auth: ${MONGO_USERNAME}:${MONGO_PASSWORD}
+pheidi_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 pheidi_mongo_replset_name: api
-pheidi_runnabot_tokens: ${GITHUB_TOKEN}
-pheidi_email_github_token: ${GITHUB_TOKEN}
+pheidi_runnabot_tokens: "{{ github_token }}"
+pheidi_email_github_token: "{{ github_token }}"
 
-registry_s3_access_key: ${AWS_ACCESS_KEY}
-registry_s3_secret_key: ${AWS_SECRET_KEY}
-registry_s3_bucket: runnableimages.${ENV}
-registry_s3_region: ${AWS_REGION}
+registry_s3_access_key: "{{ aws_access_key_id }}"
+registry_s3_secret_key: "{{ aws_secret_key }}"
+registry_s3_bucket: runnableimages.{{ enviroment }}
+registry_s3_region: "{{ aws_region }}"
 
-signin_frontend_s3_region: ${AWS_REGION}
+signin_frontend_s3_region: "{{ aws_region }}"
 web_url: https://app.{{ domain }}
 marketing_url: https://{{ domain }}
 mixpanel_url: https://mixpanel.{{ domain }}
-web_aws_bucket_region: ${AWS_REGION}
+web_aws_bucket_region: "{{ aws_region }}"
 
-aws_access_key_id: ${AWS_ACCESS_KEY}
-aws_secret_access_key: ${AWS_SECRET_KEY}
-shiva_aws_region: ${AWS_REGION}
-shiva_dock_security_groups: ${AWS_DOCK_SECURITY_GROUP}
-shiva_ssh_key_name: ${MAIN_HOST_ACCESS_KEY}
+aws_access_key_id: "{{ aws_access_key_id }}"
+aws_secret_access_key: "{{ aws_secret_key }}"
+shiva_aws_region: "{{ aws_region }}"
+shiva_dock_security_groups: "{{ aws_dock_security_group }}"
+shiva_ssh_key_name: "{{ main_host_access_key }}"
 shiva_aws_instance_image_id: ami-30c74e50
 shiva_aws_instance_image_name: dock-ami-build-v.0.0.1
 shiva_aws_instance_type: t2.medium
-shiva_dock_pool_asg_name: ${ENV}-asg-dock-pool
-shiva_aws_launch_configuration_name: ${ENV}-dock-lc-0.0.1
-shiva_aws_auto_scaling_group_subnets: ${AWS_DOCK_SUBNET}
+shiva_dock_pool_asg_name: "{{ enviroment }}-asg-dock-pool"
+shiva_aws_launch_configuration_name: "{{ enviroment }}-dock-lc-0.0.1"
+shiva_aws_auto_scaling_group_subnets: "{{ aws_dock_subnet }}"
 shiva_aws_auto_scaling_group_max: 29
-shiva_aws_auto_scaling_group_prefix: asg-${ENV}-
+shiva_aws_auto_scaling_group_prefix: asg-{{ enviroment }}-
 
-aws_access_key: ${AWS_ACCESS_KEY}
-aws_secret_key: ${AWS_SECRET_KEY}
-environment_name: ${ENV}
+aws_access_key: "{{ aws_access_key_id }}"
+aws_secret_key: "{{ aws_secret_key }}"
+environment_name: "{{ enviroment }}"
 
 consul_host_address: "{{ hostvars[groups['consul'][0]]['ansible_default_ipv4']['address'] }}"
 consul_https_port: 65201
 consul_api_port: 65201
 
-vault_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
-vault_aws_access_key_id: ${AWS_ACCESS_KEY}
-vault_aws_secret_key: ${AWS_SECRET_KEY}
-vault_aws_region: ${AWS_REGION}
+vault_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
+vault_aws_access_key_id: "{{ aws_access_key_id }}"
+vault_aws_secret_key: "{{ aws_secret_key }}"
+vault_aws_region: "{{ aws_region }}"
 vault_port: 65240
 vault_ssl_port: 65241
 
@@ -117,13 +149,11 @@ log_driver: syslog
 log_facility: local7
 app_log_dir: /docker/app-logs
 
-pg_user: ${POSTGRES_PASSORD}
-pg_pass: ${POSTGRES_PASSWORD}
-pg_host: ${POSTGRES_HOST}:5432
+pg_user: "{{ postgres_user }}"
+pg_pass: "{{ postgres_password }}"
+pg_host: "{{ postgres_host }}:5432"
 pg_database: astral
 
-rabbit_username: ${RABBIT_USERNAME}
-rabbit_password: ${RABBIT_PASSWORD}
 rabbit_host_address: "{{ hostvars[groups['rabbitmq'][0]]['ansible_default_ipv4']['address'] }}"
 rabbit_port: 54321
 
@@ -150,18 +180,10 @@ is_github_enterprise: false
 github_protocol: https
 github_api_url: https://api.github.com
 
-domain: ${DOMAIN}
-node_env: ${ENV}
+node_env: "{{ enviroment }}"
 registry_port: 65001
-user_content_domain: ${USER_CONTENT_DOMAIN}
 max_navi_port: 65000
 redis_tls_port: 65076
-api_hello_runnable_github_token: ${HELLO_RUNNABLE_GITHUB_TOKEN}
-vault_auth_token: ${VAULT_AUTH_TOKEN}
-vault_token_01: ${VAULT_TOKEN_1}
-vault_token_02: ${VAULT_TOKEN_2}
-vault_token_03: ${VAULT_TOKEN_3}
-vault_token_04: ${VAULT_TOKEN_2}
-vault_token_05: ${VAULT_TOKEN_2}
+api_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
 proxy_container_image: runnable/sticky-nginx
 proxy_container_image_version: v1.8.1
