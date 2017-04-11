@@ -16,7 +16,7 @@
 - include: api.yml git_branch="{{ api_branch }}" -t deploy
 - include: drake.yml git_branch="{{ drake_branch }}" -t deploy
 - include: cream.yml git_branch="{{ cream_branch }}" -t deploy # CREAM fails if big-poppa or API is down
-- include: web.yml git_branch="{{ angular_branch }}" -t deploy # fucked
+- include: web.yml git_branch="{{ runnable_angular_branch }}" -t deploy # fucked
 
 # Networking services
 - include: detention.yml git_branch="{{ detention_branch }}" -t deploy
