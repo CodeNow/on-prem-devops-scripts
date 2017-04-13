@@ -89,3 +89,6 @@ socket-server
 
 [pheidi]
 10.4.0.100
+
+[web]
+10.4.0.100

@@ -1,6 +1,6 @@
 name: api-core
 
-container_image: runnable/{{ name }}
+container_image: runnable/api
 
 hosted_ports: [ "{{ api_port }}" ]
 

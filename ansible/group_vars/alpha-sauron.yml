@@ -1,13 +1,13 @@
 name: sauron
 
-container_image: "registry.runnable.com/runnable/{{ name }}"
+container_image: "runnable/{{ name }}"
 container_tag: "{{ git_branch }}"
 repo: "git@github.com:CodeNow/{{ name }}.git"
 node_version: "4.2.2"
 npm_version: "2.14.7"
 
 weave_path: "/bin/weave"
-docker_path: "/bin/docker"
+docker_path: "/usr/bin/docker"
 
 dockerfile_pre_install_commands: [
   "curl -L https://get.docker.com/builds/Linux/x86_64/docker-1.6.2 -o {{ docker_path }}",
