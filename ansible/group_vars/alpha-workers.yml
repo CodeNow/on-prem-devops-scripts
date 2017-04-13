@@ -1,6 +1,7 @@
 name: api-worker
 
 container_image: runnable/{{ name }}
+kill_container_name: "{{ name }}"
 
 memory_hard_limit: 1g
 
@@ -10,6 +11,7 @@ container_envs: >
   -e IS_QUEUE_WORKER=true
 
 container_run_opts: >
+  --name {{ name }}
   -h {{ name }}
   -d
   -v /opt/ssl/docker/{{ name }}:/etc/ssl/docker:ro
