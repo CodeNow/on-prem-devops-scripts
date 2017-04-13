@@ -136,8 +136,8 @@ consul_https_port: 65202
 consul_api_port: 65201
 
 vault_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
-vault_aws_access_key_id:
-vault_aws_secret_access_key:
+vault_aws_access_key_id: "{{ aws_access_key_id }}"
+vault_aws_secret_key: "{{ aws_secret_access_key }}"
 vault_aws_region: "{{ aws_region }}"
 vault_port: 65240
 vault_ssl_port: 65241
