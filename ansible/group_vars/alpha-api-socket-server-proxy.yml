@@ -5,7 +5,7 @@ name: nginx
 proxy_service_name: api-socket-server
 target_container_name: nginx
 target_updater_file_path: /etc/nginx/sites-enabled
-template_command: /bin/docker kill -s HUP {{ target_container_name }}
+template_command: /usr/bin/docker kill -s HUP {{ target_container_name }}
 template_path: /etc/nginx/template/api-socket-server.tmpl
 
 # used by container_kill_start

@@ -1,6 +1,6 @@
 backend "consul" {
   advertise_addr = "http://{{ ansible_default_ipv4.address }}:{{ vault_port }}"
-  address = "{{ ansible_default_ipv4.address }}:{{ consul_api_port }}"
+  address = "{{ ansible_default_ipv4.address }}:{{ consul_https_port }}"
   scheme = "http"
   path = "vault"
 }

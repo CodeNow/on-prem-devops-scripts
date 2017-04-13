@@ -14,4 +14,4 @@ container_run_opts: >
 
 container_run_args: >
   -ip {{ ansible_default_ipv4.address }}
-  consul://{{ consul_host_address }}:{{ consul_api_port }}
+  consul://{{ consul_host_address }}:{{ consul_https_port }}
