@@ -1,6 +1,7 @@
 name: api-socket-server
 
 container_image: runnable/{{ name }}
+kill_container_name: "{{ name }}"
 
 hosted_ports: [ "{{ api_port }}" ]
 
@@ -14,6 +15,7 @@ container_envs: >
   -e NUM_WORKERS=1
 
 container_run_opts: >
+  --name {{ name }}
   -h {{ name }}
   -d
   -P

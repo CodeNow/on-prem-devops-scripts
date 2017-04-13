@@ -3,17 +3,25 @@ name: "runnable-angular"
 container_image: runnable/{{ name }}
 container_tag: "{{ git_branch }}"
 
-restart_policy: no
+restart_policy: "no"
 
 container_envs: >
  -e API_SOCK_URL=https://{{ api_socket_server_hostname }}
  -e API_URL=https://{{ api_hostname }}
- -e MIXPANEL_PROXY_URL={{ mixpanel_proxy_url }}
+ {% if mixpanel_proxy_url is defined %} -e MIXPANEL_PROXY_URL={{ mixpanel_proxy_url }} {% endif %}
  -e AWS_ACCESS_KEY={{ api_aws_access_key_id }}
  -e AWS_BUCKET=app.{{ domain }}
  -e AWS_REGION={{ web_aws_bucket_region }}
  -e AWS_SECRET_KEY={{ api_aws_secret_access_key }}
  -e MARKETING_URL={{ marketing_url }}
  -e NODE_ENV={{ node_env }}
- -e STRIPE_TOKEN={{ cream_stripe_publishable_key }}
+ {% if cream_stripe_publishable_key is defined %} -e STRIPE_TOKEN={{ cream_stripe_publishable_key }} {% endif %}
  -e USER_CONTENT_DOMAIN={{ user_content_domain }}
+
+container_run_opts: >
+  -d
+  {{container_envs}}
+
+npm_start_command: run gruntDeploy
+
+container_run_args: npm {{ npm_start_command }}

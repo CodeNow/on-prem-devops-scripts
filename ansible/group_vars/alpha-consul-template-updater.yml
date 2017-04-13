@@ -13,6 +13,6 @@ container_run_opts: >
   --volumes-from {{ target_container_name }}
 
 container_run_args: >
-  -consul-addr={{ consul_host_address }}:{{ consul_api_port }}
+  -consul-addr={{ consul_host_address }}:{{ consul_https_port }}
   -wait=1s
   -template="/tmp/template/{{ proxy_service_name }}.tmpl:{{ target_updater_file_path }}/{{ proxy_service_name }}.conf:{{ template_command }}"

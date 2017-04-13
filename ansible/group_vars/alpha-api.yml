@@ -1,6 +1,7 @@
 name: api-core
 
-container_image: runnable/{{ name }}
+container_image: runnable/api
+kill_container_name: "{{ name }}"
 
 hosted_ports: [ "{{ api_port }}" ]
 
@@ -16,6 +17,7 @@ container_envs: >
   {% if api_rollbar_key is defined %} -e ROLLBAR_KEY={{ api_rollbar_key }} {% endif %}
 
 container_run_opts: >
+  --name {{ name }}
   -h {{ name }}
   -d
   -P

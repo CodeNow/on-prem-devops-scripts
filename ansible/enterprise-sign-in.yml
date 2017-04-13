@@ -1,7 +1,7 @@
 ---
 - hosts: web
   vars_files:
-    - group_vars/alpha-web.yml
+    - group_vars/alpha-enterprise-signin.yml
   roles:
   - { role: logs }
   - { role: container_kill_start }
