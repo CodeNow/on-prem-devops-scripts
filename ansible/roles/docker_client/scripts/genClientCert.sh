@@ -36,8 +36,9 @@ openssl x509 \
   -days 365 \
   -sha256 \
   -in "$CLIENT/client.csr" \
-  -CA ca.pem \
-  -CAkey ca-key.pem \
+  -CA ./certs/ca.pem \
+  -CAkey ./certs/ca-key.pem \
+  -passin file:./certs/pass \
   -CAcreateserial \
   -out "$CLIENT/cert.pem" \
   -extfile "$CLIENT/extfile.cnf"
