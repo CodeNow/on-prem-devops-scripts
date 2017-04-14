@@ -17,4 +17,4 @@ container_run_args: >
   --tlscacert={{ docker_ca_path }}
   --tlscert={{ docker_cert_path }}
   --tlskey={{ docker_key_path }}
-  consul://{{ consul_host_address }}:{{ consul_api_port }}/swarm
+  consul://{{ consul_host_address }}:{{ consul_https_port }}/swarm
