@@ -1,5 +1,5 @@
 ---
-- hosts: userland
+- hosts: single-host-proxy
   vars_files:
   - group_vars/alpha-lets-encrypt-certs-generation.yml
   roles:
