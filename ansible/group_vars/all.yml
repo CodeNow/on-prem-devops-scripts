@@ -1,36 +1,36 @@
 ## Custom Vars
 
-aws_access_key_id:
-aws_dock_security_group:
-aws_dock_subnet:
-aws_region:
-aws_secret_access_key:
-domain:
-enviroment:
-github_client_id:
-github_client_secret:
-github_token:
-hello_runnable_github_token:
-intercom_id:
-intercom_key:
-main_host_access_key:
-mongo_password:
-mongo_user:
-navi_cookie_secret:
-postgres_host:
-postgres_password:
-postgres_user:
-rabbit_password:
-rabbit_username:
-sendgrid_key:
-user_content_domain:
-main_host_private_ip:
-vault_auth_token:
-vault_token_01:
-vault_token_02:
-vault_token_03:
-vault_token_04:
-vault_token_05:
+# aws_access_key_id:
+# aws_dock_security_group:
+# aws_dock_subnet:
+# aws_region:
+# aws_secret_access_key:
+# domain:
+# enviroment:
+# github_client_id:
+# github_client_secret:
+# github_token:
+# hello_runnable_github_token:
+# intercom_id:
+# intercom_key:
+# main_host_access_key:
+# mongo_password:
+# mongo_user:
+# navi_cookie_secret:
+# postgres_host:
+# postgres_password:
+# postgres_user:
+# rabbit_password:
+# rabbit_username:
+# sendgrid_key:
+# user_content_domain:
+# main_host_private_ip:
+# vault_auth_token:
+# vault_token_01:
+# vault_token_02:
+# vault_token_03:
+# vault_token_04:
+# vault_token_05:
 
 ## Defaults
 
@@ -137,7 +137,7 @@ shiva_aws_auto_scaling_group_prefix: asg-{{ enviroment }}-
 
 environment_name: "{{ enviroment }}"
 
-consul_host_address: "{{ hostvars[groups['consul'][0]]['ansible_default_ipv4']['address'] }}"
+consul_host_address: "{{ main_host_private_ip }}"
 consul_https_port: 65202
 consul_api_port: 65201
 
