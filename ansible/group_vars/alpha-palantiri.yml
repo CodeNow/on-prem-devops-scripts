@@ -8,7 +8,7 @@ npm_version: "2.14.7"
 
 # container settings
 container_envs: >
-  -e CONSUL_HOST={{ consul_host_address }}:{{ consul_api_port }}
+  -e CONSUL_HOST={{ consul_host_address }}:{{ consul_https_port }}
   -e NODE_ENV={{ node_env }}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
   -e RABBITMQ_PASSWORD={{ rabbit_password }}
