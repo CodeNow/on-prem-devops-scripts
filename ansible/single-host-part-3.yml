@@ -2,7 +2,6 @@
 - include: swarm-manager.yml
 - include: palantiri.yml git_branch="{{ palantiri_branch }}"
 - include: sauron.yml git_branch="{{ sauron_branch }}"
-- include: shiva.yml git_branch="{{ astral_branch }}"
 - include: khronos.yml git_branch="{{ khronos_branch }}"
 - include: docker-listener.yml git_branch="{{ docker_listener_branch }}"
 
@@ -31,7 +30,7 @@
 # Networking services
 - include: detention.yml git_branch="{{ detention_branch }}"
 - include: link.yml git_branch="{{ link_branch }}"
-- include: navi.yml git_branch="{{ navi_branch }}" # Connects to Redis over tls port
+- include: navi.yml git_branch="{{ navi_branch }}"
 
 # Other
 - include: optimus.yml git_branch="{{ optimus_branch }}"
