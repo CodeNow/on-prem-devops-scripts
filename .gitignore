@@ -5,4 +5,4 @@
 .DS_Store
 ansible/certs
 ansible/roles/docker_client/scripts/files/certs/
-main-vars.yaml
+main-vars.yml
