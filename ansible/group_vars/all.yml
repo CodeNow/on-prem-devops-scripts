@@ -80,6 +80,12 @@ cream_port: 8899
 
 charon_port: 53
 
+clio_host_address: "{{ hostvars[groups['clio'][0]]['ansible_default_ipv4']['address'] }}"
+clio_port: 8008
+clio_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
+clio_mongo_replset_name: cli-rs
+clio_mongo_database: clio
+
 drake_hostname: drake.{{ domain }}
 drake_port: 80
 

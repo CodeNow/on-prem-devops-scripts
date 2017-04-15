@@ -92,3 +92,6 @@ socket-server
 
 [web]
 10.4.0.100
+
+[clio]
+10.4.0.100
