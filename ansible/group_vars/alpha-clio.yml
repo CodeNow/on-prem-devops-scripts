@@ -1,6 +1,5 @@
 name: clio
 
-  p
 container_image: runnable/{{ name }}
 container_tag: "{{ git_branch }}"
 hosted_ports: ["{{ clio_port }}"]

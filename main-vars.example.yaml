@@ -21,6 +21,10 @@ postgres_user:
 rabbit_password:
 rabbit_username:
 sendgrid_key:
+dock_registry_s3_access_key:
+dock_registry_s3_secret_key:
+ec2_describe_aws_access_key:
+ec2_describe_aws_secret_key:
 user_content_domain:
 main_host_private_ip:
 vault_auth_token:

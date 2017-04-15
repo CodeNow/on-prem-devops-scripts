@@ -48,5 +48,3 @@ container_run_opts: >
 npm_start_command: run start-worker
 
 container_run_args: npm {{ npm_start_command }}
-
-
