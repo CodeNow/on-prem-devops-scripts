@@ -1,10 +1,10 @@
 aws_access_key_id:
 aws_dock_security_group:
 aws_dock_subnet:
-aws_region:
+aws_region: us-west-2
 aws_secret_access_key:
 domain:
-enviroment:
+enviroment: runnable-on-prem
 github_client_id:
 github_client_secret:
 github_token:
@@ -26,7 +26,7 @@ dock_registry_s3_secret_key:
 ec2_describe_aws_access_key:
 ec2_describe_aws_secret_key:
 user_content_domain:
-main_host_private_ip:
+main_host_private_ip: 10.4.0.100
 vault_auth_token:
 vault_token_01:
 vault_token_02:
