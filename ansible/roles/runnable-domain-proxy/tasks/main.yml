@@ -24,7 +24,6 @@
 - name: create chained cert
   tags: [ configure_proxy, certs ]
   become: true
-  when: true
   shell: |
     cat /etc/ssl/certs/{{ domain }}/cert.pem > /etc/ssl/certs/{{ domain }}/chained.pem
     echo "" >> /etc/ssl/certs/{{ domain }}/chained.pem # Add newline

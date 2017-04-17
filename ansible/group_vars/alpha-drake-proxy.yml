@@ -8,10 +8,6 @@ target_updater_file_path: /etc/nginx/sites-enabled
 template_command: docker kill -s HUP {{ target_container_name }}
 template_path: /etc/nginx/template/drake-http.tmpl
 
-# used by container_kill_start
-container_image: "{{ proxy_container_image }}"
-container_tag: "{{ proxy_container_image_version }}"
-
 restart_policy: always
 
 container_run_opts: >

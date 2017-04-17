@@ -20,7 +20,6 @@ dockerfile_pre_install_commands: [
 container_envs: >
   -e BIG_POPPA_HOST=http://{{ big_poppa_host_address }}:{{ big_poppa_port }}
   -e DOMAIN={{ domain }}
-  -e EMAIL_GITHUB_ACCESS_TOKEN={{ pheidi_email_github_token }}
   -e FULL_API_DOMAIN=https://api.{{ domain }}
   {% if pheidi_intercom_admin_id is defined %} -e INTERCOM_ADMIN_ID={{ pheidi_intercom_admin_id }} {% endif %}
   {% if pheidi_intercom_key is defined %} -e INTERCOM_API_KEY={{ pheidi_intercom_key }} {% endif %}
