@@ -26,7 +26,7 @@ container_envs: >
   {% if pheidi_intercom_key is defined %} -e INTERCOM_API_KEY={{ pheidi_intercom_key }} {% endif %}
   {% if pheidi_intercom_id is defined %} -e INTERCOM_APP_ID={{ pheidi_intercom_id }} {% endif %}
   -e MONGO=mongodb://{{ pheidi_mongo_auth }}@{{ mongo_hosts }}/{{ api_mongo_database }}
-  -e MONGO_REPLSET_NAME={{ pheidi_mongo_replset_name }}
+  {% if pheidi_mongo_replset_name is defined %} -e MONGO_REPLSET_NAME={{ pheidi_mongo_replset_name }} {% endif %}
   -e NODE_ENV="{{ node_env }}"
   -e RABBITMQ_HOSTNAME="{{ rabbit_host_address }}"
   -e RABBITMQ_PASSWORD="{{ rabbit_password }}"

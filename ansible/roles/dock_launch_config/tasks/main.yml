@@ -9,7 +9,7 @@
     backup=yes
   vars:
     - app_name: "krain"
-    - enviroment_vars: enviroment_vars
+    - environment_vars: environment_vars
 
 # this requires the use of gnu/coreutils base64 (`brew install coreutils`)
 # Allows us to use same base64 locally and in host
@@ -29,7 +29,7 @@
     backup=yes
   vars:
     - app_name: "charon"
-    - enviroment_vars: enviroment_vars
+    - environment_vars: environment_vars
 
 # this requires the use of gnu/coreutils base64 (`brew install coreutils`)
 # Allows us to use same base64 locally and in host
@@ -62,7 +62,7 @@
 - name: Generate dock script
   template:
     src=init.tmpl
-    dest=~/dock-{{ enviroment }}.sh
+    dest=~/dock-{{ environment }}.sh
   vars:
     tokens: "{{ vault_tokens }}"
     is_dock_pool: false
@@ -70,7 +70,7 @@
 - name: Generate dock script
   template:
     src=init.tmpl
-    dest=~/dock-pool-{{ enviroment }}.sh
+    dest=~/dock-pool-{{ environment }}.sh
   vars:
     tokens: "{{ vault_tokens }}"
     is_dock_pool: true
