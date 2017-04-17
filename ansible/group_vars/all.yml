@@ -2,6 +2,7 @@
 # Make sure you include variables in main-vars.yml (from main-vars.yml)
 
 ## Defaults
+is_on_prem: true
 
 api_number_of_containers: 1
 api_aws_access_key_id: "{{ aws_access_key_id }}"
