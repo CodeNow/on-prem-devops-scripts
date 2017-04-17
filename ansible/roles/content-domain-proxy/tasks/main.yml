@@ -24,13 +24,10 @@
 - name: create chained cert
   tags: [ configure_proxy, certs ]
   become: true
-  when: add_certs.changed
-  shell: >
-    cat
-    /etc/ssl/certs/{{ user_content_domain }}/cert.pem
-    /etc/ssl/certs/{{ user_content_domain }}/ca.pem
-    >
-    /etc/ssl/certs/{{ user_content_domain }}/chained.pem
+  shell: |
+    cat /etc/ssl/certs/{{ domain }}/cert.pem > /etc/ssl/certs/{{ domain }}/chained.pem
+    echo "" >> /etc/ssl/certs/{{ domain }}/chained.pem # Add newline
+    cat /etc/ssl/certs/{{ domain }}/ca.pem >> /etc/ssl/certs/{{ domain }}/chained.pem
 
 - name: create dhparam.pem
   tags: [ configure_proxy, certs ]

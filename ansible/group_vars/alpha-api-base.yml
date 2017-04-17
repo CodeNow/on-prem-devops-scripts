@@ -70,5 +70,5 @@ api_base_container_envs: >-
   -e SENDGRID_KEY={{ sendgrid_key }}
   -e SWARM_HOST=http://{{ swarm_host_address }}:{{ swarm_master_port }}
   -e USER_CONTENT_DOMAIN={{ user_content_domain }}
-  -e VALID_REDIR_TLDS=runnable.io,runnableapp.com
+  -e VALID_REDIR_TLDS={{ domain }},{{ user_content_domain }}
   -e WEB_URL=https://app.{{ domain }}
