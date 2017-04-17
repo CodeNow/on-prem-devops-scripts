@@ -7,7 +7,7 @@ krain_env: default
 app_name: krain
 app_repo: git@github.com:CodeNow/krain.git
 
-enviroment_vars: {}
+environment_vars: {}
 
 # consul values
 consul_values:

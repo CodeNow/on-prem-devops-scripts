@@ -3,7 +3,7 @@ app_name: "{{ name }}"
 app_repo: git@github.com:CodeNow/{{ name }}.git
 hosted_ports: ["{{ charon_port }}"]
 
-enviroment_vars:
+environment_vars:
   API_URL: "{{ api_url }}"
   API_TOKEN: "{{ github_token }}"
   DOMAIN_FILTER: "{{ user_content_domain }}"

@@ -9,13 +9,12 @@ api_aws_access_key_id: "{{ aws_access_key_id }}"
 api_aws_secret_access_key: "{{ aws_secret_access_key }}"
 api_github_client_id: "{{ github_client_id }}"
 api_github_client_secret: "{{ github_client_secret }}"
-api_github_deploy_keys_bucket: "runnable.deploykeys.{{ enviroment }}"
+api_github_deploy_keys_bucket: "runnable.deploykeys.{{ environment }}"
 api_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 api_mongo_database: api
-api_github_deploy_key_title: Runnable-io-{{ enviroment }}
-api_mongo_replset_name: "{{ enviroment }}-rs0"
-api_s3_context_bucket: runnable.context.resources.{{ enviroment }}
-api_s3_log_bucket: "{{ enviroment }}.container-logs"
+api_github_deploy_key_title: Runnable-io-{{ environment }}
+api_s3_context_bucket: runnable.context.resources.{{ environment }}
+api_s3_log_bucket: "{{ environment }}.container-logs"
 api_hostname: api.{{ domain }}
 api_url: https://{{ api_hostname }}
 api_socket_server_hostname: apisock.{{ domain }}
@@ -35,7 +34,6 @@ big_poppa_pg_user: "{{ postgres_user }}"
 big_poppa_pg_database: big_poppa
 big_poppa_github_token: "{{ github_token }}"
 big_poppa_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
-big_poppa_mongo_replset_name: "{{ enviroment }}-rs0"
 big_poppa_pg_pool_min: 10
 big_poppa_pg_pool_max: 20
 big_poppa_port: 7788
@@ -53,14 +51,12 @@ charon_port: 53
 clio_host_address: "{{ hostvars[groups['clio'][0]]['ansible_default_ipv4']['address'] }}"
 clio_port: 8008
 clio_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
-clio_mongo_replset_name: cli-rs
 clio_mongo_database: clio
 
 drake_hostname: drake.{{ domain }}
 drake_port: 80
 
 khronos_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
-khronos_mongo_replset_name: "{{ enviroment }}"
 
 navi_host_address: "{{ hostvars[groups['navi'][0]]['ansible_default_ipv4']['address'] }}"
 navi_http_port: 3567
@@ -74,17 +70,16 @@ link_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
 optimus_hostname: optimus.{{ domain }}
 optimus_aws_access_id: "{{ aws_access_key_id }}"
 optimus_aws_secret_id: "{{ aws_secret_access_key }}"
-optimus_github_deploy_keys_bucket: runnable.deploykeys.{{ enviroment }}
+optimus_github_deploy_keys_bucket: runnable.deploykeys.{{ environment }}
 optimus_port: 80
 
 pheidi_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
-pheidi_mongo_replset_name: api
 pheidi_runnabot_tokens: "{{ github_token }}"
 pheidi_email_github_token: "{{ github_token }}"
 
 registry_s3_access_key: "{{ aws_access_key_id }}"
 registry_s3_secret_key: "{{ aws_secret_access_key }}"
-registry_s3_bucket: runnableimages.{{ enviroment }}
+registry_s3_bucket: runnableimages.{{ environment }}
 registry_s3_region: "{{ aws_region }}"
 
 signin_frontend_s3_region: "{{ aws_region }}"
@@ -99,13 +94,15 @@ shiva_ssh_key_name: "{{ main_host_access_key }}"
 shiva_aws_instance_image_id: ami-30c74e50
 shiva_aws_instance_image_name: dock-ami-build-v.0.0.1
 shiva_aws_instance_type: t2.medium
-shiva_dock_pool_asg_name: "{{ enviroment }}-asg-dock-pool"
-shiva_aws_launch_configuration_name: "{{ enviroment }}-dock-lc-0.0.1"
+shiva_dock_pool_asg_name: "{{ environment }}-asg-dock-pool"
+shiva_aws_launch_configuration_name: "{{ environment }}-dock-lc-0.0.1"
 shiva_aws_auto_scaling_group_subnets: "{{ aws_dock_subnet }}"
 shiva_aws_auto_scaling_group_max: 29
-shiva_aws_auto_scaling_group_prefix: asg-{{ enviroment }}-
+shiva_aws_auto_scaling_group_prefix: asg-{{ environment }}-
+dock_registry_s3_access_key: "{{ aws_access_key_id }}"
+dock_registry_s3_secret_key: "{{ aws_secret_access_key }}"
 
-environment_name: "{{ enviroment }}"
+environment_name: "{{ environment }}"
 
 consul_host_address: "{{ main_host_private_ip }}"
 consul_https_port: 65202
@@ -154,7 +151,7 @@ is_github_enterprise: false
 github_protocol: https
 github_api_url: https://api.github.com
 
-node_env: "{{ enviroment }}"
+node_env: "{{ environment }}"
 registry_port: 65001
 max_navi_port: 65000
 redis_tls_port: 65076

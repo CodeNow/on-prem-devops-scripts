@@ -9,7 +9,7 @@ npm_version: "2.15.11"
 
 container_envs: >
   -e MONGO=mongodb://{{ clio_mongo_auth }}@{{ mongo_hosts }}/{{ clio_mongo_database }}
-  -e MONGO_REPLSET_NAME={{ clio_mongo_replset_name }}
+  {% if clio_mongo_replset_name is defined %} -e MONGO_REPLSET_NAME={{ clio_mongo_replset_name }} {% endif %}
   -e NODE_ENV={{ node_env }}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
   -e RABBITMQ_PASSWORD={{ rabbit_password }}
