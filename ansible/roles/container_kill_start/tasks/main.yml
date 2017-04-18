@@ -36,7 +36,7 @@
   tags: deploy
   when: registry_username is defined and registry_token is defined
   become: yes
-  command: docker login -u {{ registry_username }} -p {{ registry_token }} {{ registry_url }}
+  command: docker login -u {{ registry_username }} -p {{ registry_token }} {{ registry_host }}
 
 # get latest image
 # tag will default to latest
@@ -50,7 +50,7 @@
   tags: deploy
   when: registry_username is defined and registry_token is defined
   become: yes
-  command: docker logout {{ registry_url }}
+  command: docker logout {{ registry_host }}
 
 # get id of new image
 - name: get id of the docker image

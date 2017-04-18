@@ -1,7 +1,7 @@
 name: "swarm-manager"
 
 # container_kill_start settings
-container_image: quay.io/runnable/swarm
+container_image: "{{ registry_host }}/runnable/swarm"
 container_tag: "{{ swarm_version }}"
 
 memory_hard_limit: 10g

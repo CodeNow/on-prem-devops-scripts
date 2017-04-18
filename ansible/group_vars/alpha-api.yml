@@ -1,6 +1,6 @@
 name: api-core
 
-container_image: quay.io/runnable/api
+container_image: "{{ registry_host }}/runnable/api"
 kill_container_name: "{{ name }}"
 
 hosted_ports: [ "{{ api_port }}" ]

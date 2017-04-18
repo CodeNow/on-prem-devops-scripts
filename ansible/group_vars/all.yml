@@ -77,6 +77,7 @@ pheidi_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 pheidi_runnabot_tokens: "{{ github_token }}"
 pheidi_email_github_token: "{{ github_token }}"
 
+registry_host: "quay.io"
 registry_s3_access_key: "{{ aws_access_key_id }}"
 registry_s3_secret_key: "{{ aws_secret_access_key }}"
 registry_s3_bucket: runnableimages.{{ environment }}
@@ -156,5 +157,5 @@ registry_port: 65001
 max_navi_port: 65000
 redis_tls_port: 65076
 api_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
-proxy_container_image: quay.io/runnable/sticky-nginx
+proxy_container_image: {{ registry_host }}/runnable/sticky-nginx
 proxy_container_image_version: v1.8.1
