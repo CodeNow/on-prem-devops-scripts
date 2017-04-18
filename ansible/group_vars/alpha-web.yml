@@ -1,6 +1,7 @@
 name: "runnable-angular"
 
-container_image: runnable/{{ name }}
+container_image: quay.io/runnable/{{ name }}
+
 container_tag: "{{ git_branch }}"
 
 restart_policy: "no"

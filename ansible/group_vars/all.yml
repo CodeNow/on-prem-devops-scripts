@@ -156,5 +156,5 @@ registry_port: 65001
 max_navi_port: 65000
 redis_tls_port: 65076
 api_hello_runnable_github_token: "{{ hello_runnable_github_token }}"
-proxy_container_image: runnable/sticky-nginx
+proxy_container_image: quay.io/runnable/sticky-nginx
 proxy_container_image_version: v1.8.1
