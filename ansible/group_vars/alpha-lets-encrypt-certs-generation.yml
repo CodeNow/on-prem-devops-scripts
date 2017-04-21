@@ -1,10 +1,6 @@
 ---
 name: nginx
 
-# used by consul template updater
-target_container_name: nginx
-target_updater_file_path: /etc/nginx/sites-enabled
-
 # used by container_kill_start
 container_image: "{{ name }}"
 container_tag: "1.10"
@@ -15,7 +11,7 @@ container_run_opts: >
   -d
   --name "{{ name }}"
   -p 80:80
-  -v {{ target_updater_file_path }}:/etc/nginx/sites-enabled
   -v /etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  -v /etc/nginx/sites-enabled/default.conf:/etc/nginx/sites-enabled/default.conf:ro
   -v /var/www/html:/var/www/html
   -v /etc/ssl/certs/{{ domain }}:/etc/ssl/certs/{{ domain }}:ro
