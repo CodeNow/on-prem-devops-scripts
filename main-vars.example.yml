@@ -4,7 +4,7 @@ aws_dock_subnet:
 aws_region: us-west-2
 aws_secret_access_key:
 domain:
-enviroment: runnable-on-prem
+environment: runnable-on-prem
 github_client_id:
 github_client_secret:
 github_token:
