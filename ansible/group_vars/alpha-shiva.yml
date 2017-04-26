@@ -11,6 +11,8 @@ npm_start_command: run shiva-start
 # container settings
 redis_ca_cert_path: /opt/ssl/{{ name }}/redis/ca.pem
 container_envs: >
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
   -e RABBITMQ_PASSWORD={{ rabbit_password }}
   -e RABBITMQ_PORT={{ rabbit_port }}
