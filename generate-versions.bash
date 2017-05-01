@@ -8,4 +8,4 @@ for APP in astral agreeable-egret api arithmancy big-poppa clio cream detention 
   fi
 done
 JSON="$JSON}"
-echo $JSON > ./versions.json
+echo $JSON | python -m json.tool > versions.json
