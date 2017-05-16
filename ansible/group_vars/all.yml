@@ -144,7 +144,7 @@ docker_cert_path: /etc/ssl/docker/cert.pem
 docker_port: 4242
 
 mongo_port: 65217 # 27017
-7ongo_hosts: "{% for host in groups['mongodb'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ mongo_port }}{% if not loop.last %},{% endif %}{% endfor %}"
+mongo_hosts: "{% for host in groups['mongodb'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ mongo_port }}{% if not loop.last %},{% endif %}{% endfor %}"
 
 github_varnish_host: "{{ hostvars[groups['github-varnish'][0]]['ansible_default_ipv4']['address'] }}"
 github_varnish_port: 65165 # 8765
