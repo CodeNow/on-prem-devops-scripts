@@ -36,7 +36,7 @@ big_poppa_github_token: "{{ github_token }}"
 big_poppa_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 big_poppa_pg_pool_min: 10
 big_poppa_pg_pool_max: 20
-big_poppa_port: 65078 # 7788
+big_poppa_port: 65078
 big_poppa_intercom_key: "{{ intercom_key }}"
 big_poppa_intercom_id: "{{ intercom_id }}"
 
@@ -49,7 +49,7 @@ cream_port: 8899
 charon_port: 53
 
 clio_host_address: "{{ hostvars[groups['clio'][0]]['ansible_default_ipv4']['address'] }}"
-clio_port: 65008 # 8008
+clio_port: 65008
 clio_mongo_auth: "{{ mongo_user }}:{{ mongo_password }}"
 clio_mongo_database: clio
 
@@ -127,8 +127,8 @@ pg_host: "{{ postgres_host }}:5432"
 pg_database: astral
 
 rabbit_host_address: "{{ hostvars[groups['rabbitmq'][0]]['ansible_default_ipv4']['address'] }}"
-rabbit_port: 65321 # 54321
-rabbit_admin_port: 65322 # 54320
+rabbit_port: 65321
+rabbit_admin_port: 65322
 
 redis_host_address: "{{ hostvars[groups['redis'][0]]['ansible_default_ipv4']['address'] }}"
 redis_port: 65251
@@ -143,11 +143,11 @@ docker_key_path: /etc/ssl/docker/key.pem
 docker_cert_path: /etc/ssl/docker/cert.pem
 docker_port: 4242
 
-mongo_port: 65217 # 27017
+mongo_port: 65217
 mongo_hosts: "{% for host in groups['mongodb'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ mongo_port }}{% if not loop.last %},{% endif %}{% endfor %}"
 
 github_varnish_host: "{{ hostvars[groups['github-varnish'][0]]['ansible_default_ipv4']['address'] }}"
-github_varnish_port: 65165 # 8765
+github_varnish_port: 65165
 github_domain: api.github.com
 is_github_enterprise: false
 github_protocol: https
