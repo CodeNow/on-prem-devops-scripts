@@ -11,6 +11,7 @@ container_envs: >
   -e MONGO=mongodb://{{ clio_mongo_auth }}@{{ mongo_hosts }}/{{ clio_mongo_database }}
   {% if clio_mongo_replset_name is defined %} -e MONGO_REPLSET_NAME={{ clio_mongo_replset_name }} {% endif %}
   -e NODE_ENV={{ node_env }}
+  -e PORT={{ hosted_ports[0] }}
   -e RABBITMQ_HOSTNAME={{ rabbit_host_address }}
   -e RABBITMQ_PASSWORD={{ rabbit_password }}
   -e RABBITMQ_PORT={{ rabbit_port }}
