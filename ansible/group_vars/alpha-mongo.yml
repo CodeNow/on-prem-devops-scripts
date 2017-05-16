@@ -8,6 +8,9 @@ container_image: mongo
 container_tag: latest
 container_run_opts: -d --name mongodb -p 27017:27017 -v {{ db_path }}:/data/db:rw
 
+container_run_args: >
+  {% if start_mongo_insecure is not defined %} --auth {% endif %}
+
 # do not monitor docker-daemon for mongo, as there is none
 no_datadog_docker_monitoring: true
 has_dd_integration: true
