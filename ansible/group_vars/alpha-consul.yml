@@ -16,15 +16,8 @@ container_run_opts: >
   -v /etc/consul.d:/etc/consul.d:ro
   -v /opt/runnable/consul/consul.json:/consul.json:ro
   -v /opt/consul/server:/opt/consul/server:ro
-  -p {{ ansible_default_ipv4.address }}:8300:8300
-  -p {{ ansible_default_ipv4.address }}:8301:8301
-  -p {{ ansible_default_ipv4.address }}:8301:8301/udp
-  -p {{ ansible_default_ipv4.address }}:8302:8302
-  -p {{ ansible_default_ipv4.address }}:8302:8302/udp
-  -p {{ ansible_default_ipv4.address }}:8400:8400
   -p {{ ansible_default_ipv4.address }}:{{ consul_api_port }}:8500
   -p {{ ansible_default_ipv4.address }}:{{ consul_https_port }}:{{ consul_https_port }}
-  -p 0.0.0.0:65107:{{ consul_https_port }}
   --restart=always
 
 container_run_args: >

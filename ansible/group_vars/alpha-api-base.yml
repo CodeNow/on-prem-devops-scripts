@@ -48,6 +48,7 @@ api_base_container_envs: >-
   -e GITHUB_VARNISH_HOST={{ github_varnish_host }}
   -e GITHUB_VARNISH_PORT={{ github_varnish_port }}
   -e GITHUB_PROTOCOL=http
+  {% if hello_runnable_github_id is defined %} -e HELLO_RUNNABLE_GITHUB_ID={{ hello_runnable_github_id }} {% endif %}
   -e HELLO_RUNNABLE_GITHUB_TOKEN={{ api_hello_runnable_github_token }}
   -e KRAIN_PORT={{ krain_port }}
   -e LOG_LEVEL=trace
