@@ -10,7 +10,7 @@
     "detention_branch": "v1.3.4",
     "docker_listener_branch": "v10.8.0",
     "drake_branch": "v2.5.0",
-    "enterprise_signin_branch": "v0.0.4",
+    "enterprise_sign_in_branch": "v0.0.4",
     "eru_branch": "v6.2.3",
     "github_varnish_branch": "v2.0.2",
     "khronos_branch": "v6.5.12",

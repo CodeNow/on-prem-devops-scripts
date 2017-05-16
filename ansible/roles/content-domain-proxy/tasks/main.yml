@@ -76,4 +76,4 @@
     comment="Redirect {{ item }} traffic to port 80"
   with_items:
   - 81:442
-  - 444:{{ max_navi_port  }} # Don't expose all ports if in a single host
+  - 444:{{ max_navi_port }} # Don't expose all ports if in a single host
