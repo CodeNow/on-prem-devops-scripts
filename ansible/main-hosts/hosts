@@ -4,6 +4,9 @@
 [user-local]
 127.0.0.1
 
+[docks]
+# Add the ip addresses for docks or use `docks.js` (requires AWS EC2 describe tokens)
+
 [consul]
 10.4.0.100
 
