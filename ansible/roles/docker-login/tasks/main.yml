@@ -1,0 +1,44 @@
+---
+- name: Check to see if pip is already installed.
+  become: true
+  command: "pip --version"
+  ignore_errors: true
+  changed_when: false # read-only task
+  check_mode: no
+  register: pip_is_installed
+
+- name: Download pip.
+  become: true
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=./
+  when: pip_is_installed.rc != 0
+
+- name: Install pip.
+  command: "python ./get-pip.py"
+  become: true
+  when: pip_is_installed.rc != 0
+
+- name: Install aws cli
+  become: true
+  pip:
+    name: awscli
+    executable: pip
+
+- name: Configure AWS Access Key
+  command: aws configure set aws_access_key_id {{ aws_ecr_access_key }}
+  tags: deploy
+  become: true
+
+- name: Configure AWS Secret Key
+  command: aws configure set aws_secret_access_key {{ aws_ecr_secret_key }}
+  tags: deploy
+  become: true
+
+- name: Configure AWS Region
+  command: aws configure set region {{ aws_region }}
+  tags: deploy
+  become: true
+
+- name: Login to docker
+  shell: "eval $(aws ecr get-login)"
+  tags: deploy
+  become: true
