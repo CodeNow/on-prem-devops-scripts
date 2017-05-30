@@ -42,3 +42,9 @@
   shell: "eval $(aws ecr get-login)"
   tags: deploy
   become: true
+
+- name: Pull image
+  shell: "docker pull {{ docker_image }}"
+  when: docker_image is defined
+  tags: deploy
+  become: true
