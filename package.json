@@ -1,5 +1,5 @@
 {
   "name": "on-prem-devops-scripts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Ansible playbooks for on-prem instalations"
 }
