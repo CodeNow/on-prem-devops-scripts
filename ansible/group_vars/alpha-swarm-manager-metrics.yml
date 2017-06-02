@@ -15,11 +15,11 @@ dockerfile_pre_install_commands:
 
 container_run_opts: >-
   --log-driver={{ log_driver }}
-  -e AWS_ACCESS_KEY={{ aws_access_key }}
-  -e AWS_SECRET_KEY={{ aws_secret_key }}
+  -e AWS_ACCESS_KEY={{ cloudwatch_aws_access_key }}
+  -e AWS_SECRET_KEY={{ cloudwatch_aws_secret_key }}
   -e DOCKER_CERT_PATH=/opt/ssl/docker/swarm-manager
-  -e ENVIRONMENT={{ environment_name }}
-  -e SWARM_HOSTNAME={{ ansible_default_ipv4.address }}
+  -e ENVIRONMENT={{ environment }}
+  -e SWARM_HOSTNAME={{ main_host_private_ip }}
   -e SWARM_PORT={{ swarm_master_port }}
   -v /opt/runnable/get-info.js:/get-info.js:ro
   -v /opt/ssl/docker/swarm-manager:/opt/ssl/docker/swarm-manager:ro
