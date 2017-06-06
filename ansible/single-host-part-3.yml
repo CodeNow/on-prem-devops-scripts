@@ -4,7 +4,6 @@
 - include: sauron.yml git_branch="{{ sauron_branch }}"
 - include: khronos.yml git_branch="{{ khronos_branch }}"
 - include: docker-listener.yml git_branch="{{ docker_listener_branch }}"
-- include: swarm-cloudwatch-reporter.yml git_branch="{{ furry_cactus_branch }}"
 
 # Proxies
 - include: registrator-api.yml # Only one of these is needed, so registrator-navi is not needed
