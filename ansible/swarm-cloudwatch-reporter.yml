@@ -1,15 +1,31 @@
 ---
 - hosts: swarm-manager
   vars_files:
-  - group_vars/alpha-swarm-manager-metrics.yml
+  - group_vars/alpha-swarm-cloudwatch-reporter.yml
   tasks:
+  - name: login to registry
+    tags: deploy
+    become: yes
+    command: docker login -u {{ registry_username }} -p {{ registry_token }} {{ registry_host }}
+
+  # get latest image
+  # tag will default to latest
+  - name: pull down docker image {{ container_image }}:{{ container_tag }}
+    tags: deploy
+    become: yes
+    command: docker pull {{ container_image }}:{{ container_tag }}
+
+  - name: logout of registry
+    tags: deploy
+    become: yes
+    command: docker logout {{ registry_host }}
+
   - name: run container
     tags: test_swarm_stats
     when: test_swarm_stats is defined
     become: yes
     shell: >-
       docker run
-      -e DRY_RUN=true
       {{ container_run_opts }}
       {{ container_image }}:{{ container_tag }}
       {{ container_run_args }}
