@@ -35,9 +35,8 @@
     become: yes
     cron:
       name: swarm-cloudwatch-reporter
-      cron_file: 10-swarm-cloudwatch
-      user: root
       state: present
+      minute: "*/5"
       job: >-
         docker run
         --rm
