@@ -8,6 +8,8 @@ npm_version: "2.14.7"
 
 container_envs: >
   -e API_URL={{ api_url }}
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e HELLO_RUNNABLE_GITHUB_TOKEN={{ link_hello_runnable_github_token }}
   -e MONGO=mongodb://{{ navi_mongo_auth }}@{{ mongo_hosts }}/{{ navi_mongo_database }}
   -e NODE_ENV={{ node_env }}

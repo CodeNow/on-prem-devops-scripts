@@ -17,6 +17,8 @@ dockerfile_pre_install_commands: [
 # for container settings
 container_envs: >
   -e BIG_POPPA_HOST=http://{{ big_poppa_host_address }}:{{ big_poppa_port }}
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e GIT_BRANCH={{ git_branch }}
   -e HELLO_RUNNABLE_GITHUB_TOKEN={{ cream_hello_runnable_github_token }}
   -e NODE_ENV={{ node_env }}

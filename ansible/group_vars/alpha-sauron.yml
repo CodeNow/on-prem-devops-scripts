@@ -18,6 +18,8 @@ dockerfile_pre_install_commands: [
 
 container_envs: >
   -e CONSUL_HOST={{ consul_host_address }}:{{ consul_https_port }}
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e NODE_ENV="{{ node_env }}"
   -e RABBITMQ_HOSTNAME="{{ rabbit_host_address }}"
   -e RABBITMQ_PASSWORD="{{ rabbit_password }}"

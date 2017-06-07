@@ -17,6 +17,8 @@ container_envs: >
   -e CERT_PATH={{ content_domain_certs }}
   -e COOKIE_DOMAIN=.{{ user_content_domain }}
   -e COOKIE_SECRET={{ navi_cookie_secret }}
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e ENABLE_LRU_CACHE=1
   -e ERROR_URL=http://{{ detention_host_address }}:{{ detention_port }}
   -e HTTP_PORT={{ hosted_ports[0] }}

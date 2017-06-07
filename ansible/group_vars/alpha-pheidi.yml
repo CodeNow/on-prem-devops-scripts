@@ -19,6 +19,8 @@ dockerfile_pre_install_commands: [
 
 container_envs: >
   -e BIG_POPPA_HOST=http://{{ big_poppa_host_address }}:{{ big_poppa_port }}
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e DOMAIN={{ domain }}
   -e FULL_API_DOMAIN=https://api.{{ domain }}
   {% if pheidi_intercom_admin_id is defined %} -e INTERCOM_ADMIN_ID={{ pheidi_intercom_admin_id }} {% endif %}

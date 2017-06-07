@@ -20,6 +20,8 @@ dockerfile_pre_install_commands: [
 
 # for container settings
 container_envs: >
+  {% if datadog_host_address is defined %} -e DATADOG_HOST={{ datadog_host_address }}{% endif %}
+  {% if datadog_port is defined %} -e DATADOG_PORT={{ datadog_port }}{% endif %}
   -e GITHUB_TOKEN={{ big_poppa_github_token }}
   -e INTERCOM_API_KEY={{ big_poppa_intercom_key | default('undefined') }}
   -e INTERCOM_APP_ID={{ big_poppa_intercom_id | default('undefined') }}
