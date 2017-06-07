@@ -4,5 +4,6 @@
 *.srl
 .DS_Store
 ansible/certs
+ansible/main-hosts/hosts
 ansible/roles/docker_client/scripts/files/certs/
 main-vars.yml

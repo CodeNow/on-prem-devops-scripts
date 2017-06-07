@@ -19,6 +19,8 @@ container_run_opts: >-
   -e AWS_SECRET_KEY={{ aws_cloudwatch_secret_key }}
   -e DOCKER_CERT_PATH=/opt/ssl/docker/swarm-manager
   -e ENVIRONMENT={{ environment }}
+  -e ENVIRONMENT_PREFIX=""
+  -e SECURITY_GROUP_SUFFIX="dock-sg"
   -e SWARM_HOSTNAME={{ main_host_private_ip }}
   -e SWARM_PORT={{ swarm_master_port }}
   -v /opt/runnable/get-info.js:/get-info.js:ro
