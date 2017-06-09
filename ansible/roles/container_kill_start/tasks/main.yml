@@ -1,7 +1,3 @@
-- debug:
-    var: npm_start_command
-  tags: deploy
-
 - name: look for stopped {{ container_image }} containers
   tags: deploy
   become: yes
@@ -20,6 +16,17 @@
   shell: docker rm {{ item }}
   with_items: "{{ stopped_containers.stdout_lines }}"
 
+# Necessary for docks
+- name: fix hosts file
+  become: true
+  tags: deploy
+  script: populateHostsFile.sh
+  register: output
+
+- debug:
+    var: output
+  tags: deploy
+
 # get current running container with this image
 - name: look for running containers running {{ container_image }}
   tags: deploy
@@ -27,10 +34,6 @@
   script: findTagRunning.sh {{ container_image }} {{ kill_container_name | default('') }}
   register: old_containers_id
   changed_when: old_containers_id.stdout | length > 4
-
-- debug:
-    var: old_containers_id
-  tags: deploy
 
 - name: login to registry
   tags: deploy
@@ -64,12 +67,9 @@
     awk '{print $3}'
   register: new_image_id
 
-- debug:
-    msg: "docker stop -t {{ stop_time }} {{ old_containers_id.stdout }}"
-
 # stop the old containers that were running this previously
 - name: stop old containers
-  when: old_containers_id.changed
+  when: old_containers_id.changed and old_containers_id.stdout != ""
   tags: deploy
   become: yes
   command: docker stop -t {{ stop_time }} {{ old_containers_id.stdout }}
