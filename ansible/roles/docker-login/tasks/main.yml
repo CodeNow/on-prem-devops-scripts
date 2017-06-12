@@ -23,28 +23,24 @@
     name: awscli
     executable: pip
 
-- name: Configure AWS Access Key
-  command: aws configure set aws_access_key_id {{ aws_ecr_access_key }}
-  tags: deploy
-  become: true
+- name: Put ECR docker login script in place
+  become: yes
+  template:
+    src: ecr-docker-login.sh
+    mode: 0744
+    dest: /opt/runnable/ecr-docker-login.sh
 
-- name: Configure AWS Secret Key
-  command: aws configure set aws_secret_access_key {{ aws_ecr_secret_key }}
-  tags: deploy
-  become: true
+- name: Run script for cron job
+  tags: test_docker_login
+  when: test_docker_login is defined
+  become: yes
+  shell: /opt/runnable/ecr-docker-login.sh
 
-- name: Configure AWS Region
-  command: aws configure set region {{ aws_region }}
-  tags: deploy
-  become: true
+- name: put script into cron
+  become: yes
+  cron:
+    name: ecr-docker-login
+    state: present
+    minute: "*/5"
+    job: /opt/runnable/ecr-docker-login.sh
 
-- name: Login to docker
-  shell: "eval $(aws ecr get-login)"
-  tags: deploy
-  become: true
-
-- name: Pull image
-  shell: "docker pull {{ docker_image }}"
-  when: docker_image is defined
-  tags: deploy
-  become: true
