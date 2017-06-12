@@ -24,6 +24,8 @@ api_base_container_envs: >-
   -e BIG_POPPA_HOST=http://{{ big_poppa_host_address }}:{{ big_poppa_port }}
   -e COOKIE_DOMAIN={{ domain }}
   -e CONTAINER_STOP_LIMIT=10
+  -e DOCKER_IMAGE_BUILDER_HOST_CONFIG_PATH=/root/.docker/config.json
+  -e DOCKER_IMAGE_BUILDER_VERSION=v4.6.1
   -e DOCKER_IMAGE_BUILDER_NAME={{ registry_host }}/runnable/image-builder
   -e DOCKER_IMAGE_BUILDER_CACHE=/git-cache
   -e DOCKER_IMAGE_BUILDER_LAYER_CACHE=/layer-cache
