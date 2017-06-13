@@ -1,4 +1,6 @@
 # Requires adding IP addresses to the `docks` group in hosts file
 - hosts: "{{ dock | default('docks') }}"
+  vars_files:
+    - group_vars/alpha-ecr-auto-login.yml
   roles:
-  - { role: docker-login }
+  - { role: container_kill_start }

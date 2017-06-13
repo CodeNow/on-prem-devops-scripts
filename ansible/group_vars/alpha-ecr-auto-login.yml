@@ -12,5 +12,4 @@ container_run_opts: >-
   -e AWS_SECRET_ACCESS_KEY={{ aws_ecr_secret_key }}
   -v /root/.docker/:/.docker/
   -v /var/log:/var/log
-  -e DEBUG=true
   -d
