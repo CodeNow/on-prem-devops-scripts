@@ -1,0 +1,15 @@
+name: aws-ecr-get-login
+
+container_image: "{{ registry_host }}/runnable/{{ name }}"
+container_tag: "latest"
+
+log_driver: json-file
+
+container_run_opts: >-
+  --log-driver={{ log_driver }}
+  -e AWS_DEFAULT_REGION={{ aws_region }}
+  -e AWS_ACCESS_KEY_ID={{ aws_ecr_access_key }}
+  -e AWS_SECRET_ACCESS_KEY={{ aws_ecr_secret_key }}
+  -v /root/.docker/:/.docker/
+  -v /var/log:/var/log
+  -d
