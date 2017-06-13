@@ -23,10 +23,6 @@
   script: populateHostsFile.sh
   register: output
 
-- debug:
-    var: output
-  tags: deploy
-
 # get current running container with this image
 - name: look for running containers running {{ container_image }}
   tags: deploy

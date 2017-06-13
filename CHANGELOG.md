@@ -6,12 +6,12 @@
 - Go to exchanges
 - Create an durable, fanout exchange called `org.user.private-key.secured`
 
-2. Make sure all your hosts are updated
+2. Add IP address for main host to `main-hosts/docks.js`
 
 3. Deploy docker-login.yml:
 
 ```
-ansible-playbook -i main-hosts -e "@../main-vars.yml" -e "@../versions.json" docker-login.yml
+ansible-playbook -i main-hosts -e "@../main-vars.yml" -e "@../versions.json" ecr-auto-login.yml
 ```
 
 4. Update Services:
