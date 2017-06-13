@@ -1,5 +1,9 @@
 # v0.0.10
 
+- Add support for automatic ECR login and pulling of images
+
+### Update Instructions
+
 1. Create new exchange:
 - Create ssh tunnel into Rabbit UI `ssh -NL 65322:localhost:65322 $YOUR_IP_ADDRESS`
 - Login to UI
