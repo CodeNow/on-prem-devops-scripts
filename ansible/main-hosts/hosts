@@ -1,59 +1,56 @@
 [main]
-10.4.0.200 # IP Address should match IP address in Terraform
+10.4.0.100 # IP Address should match IP address in Terraform
 
 [user-local]
 127.0.0.1
 
 [docks]
-10.4.185.92
-10.4.165.230
-10.4.177.136
-10.4.181.125
+# Add the ip addresses for docks or use `docks.js` (requires AWS EC2 describe tokens)
 
 [consul]
-10.4.0.200
+10.4.0.100
 
 [vault]
-10.4.0.200
+10.4.0.100
 
 [rabbitmq]
-10.4.0.200
+10.4.0.100
 
 [redis]
-10.4.0.200
+10.4.0.100
 
 [registry]
-10.4.0.200
+10.4.0.100
 
 [mongodb]
-10.4.0.200
+10.4.0.100
 
 [swarm-manager]
-10.4.0.200
+10.4.0.100
 
 [palantiri]
-10.4.0.200
+10.4.0.100
 
 [sauron]
-10.4.0.200
+10.4.0.100
 
 [shiva]
-10.4.0.200
+10.4.0.100
 
 [khronos]
-10.4.0.200
+10.4.0.100
 
 [big-poppa]
-10.4.0.200
+10.4.0.100
 
 [api]
-10.4.0.200
+10.4.0.100
 
 [worker]
-10.4.0.200
+10.4.0.100
 
 [socket-server]
-10.4.0.200
+10.4.0.100
 
 [api_group:children]
 worker
@@ -61,43 +58,43 @@ api
 socket-server
 
 [docker-listener]
-10.4.0.200
+10.4.0.100
 
 [ingress]
-10.4.0.200
+10.4.0.100
 
 [single-host-proxy]
-10.4.0.200
+10.4.0.100
 
 [github-varnish]
-10.4.0.200
+10.4.0.100
 
 [cream]
-10.4.0.200
+10.4.0.100
 
 [navi]
-10.4.0.200
+10.4.0.100
 
 [drake]
-10.4.0.200
+10.4.0.100
 
 [detention]
-10.4.0.200
+10.4.0.100
 
 [link]
-10.4.0.200
+10.4.0.100
 
 [navi]
-10.4.0.200
+10.4.0.100
 
 [optimus]
-10.4.0.200
+10.4.0.100
 
 [pheidi]
-10.4.0.200
+10.4.0.100
 
 [web]
-10.4.0.200
+10.4.0.100
 
 [clio]
-10.4.0.200
+10.4.0.100
