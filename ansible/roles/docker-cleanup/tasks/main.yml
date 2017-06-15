@@ -1,0 +1,32 @@
+---
+# Based on docker system rpun
+# WARNING! This will remove:
+# - all stopped containers
+# - all volumes not used by at least one container
+# - all networks not used by at least one container
+# - all images without at least one container associated to them
+
+- name: Get all stopped containers
+  shell: "docker ps -a  -f status=exited -q"
+  register: docker_containers
+  become: true
+
+- name: Remove all stopped containers
+  shell: "docker rm {{ docker_containers.stdout }}"
+  when: docker_containers.stdout != ""
+  become: true
+
+- name: Get all dangling volumes
+  shell: "docker volume ls -f dangling=true -q"
+  register: docker_volumes
+  become: true
+
+- name: Remove all dangling volumes
+  shell: "docker volume rm {{ docker_volumes.stdout }}"
+  when: docker_volumes.stdout != ""
+  become: true
+
+- name: Remove all dangling images
+  shell: "docker rmi $(docker images -a -q)"
+  ignore_errors: true
+  become: true

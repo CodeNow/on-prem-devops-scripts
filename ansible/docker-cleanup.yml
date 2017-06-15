@@ -1,0 +1,4 @@
+# Requires adding IP addresses to the `docks` group in hosts file
+- hosts: "{{ dock | default('docks') }}"
+  roles:
+  - { role: docker-cleanup }
