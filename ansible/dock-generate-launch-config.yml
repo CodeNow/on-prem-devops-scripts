@@ -1,7 +1,5 @@
 ---
 - hosts: user-local
   connection: local
-  vars_files:
-    - group_vars/alpha-ecr-auto-login.yml
   roles:
   - { role: dock_launch_config }
