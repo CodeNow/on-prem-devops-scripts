@@ -1,5 +1,5 @@
 ---
-- name: load variables
+- name: load variables for krain
   include_vars: "group_vars/alpha-krain.yml"
 
 - name: create new config file for krain
@@ -19,7 +19,7 @@
   vars:
     - app_name: "krain"
 
-- name: load variables
+- name: load variables for charon
   include_vars: "group_vars/alpha-charon.yml"
 
 - name: create new config file for charon
@@ -58,6 +58,15 @@
 - name: encode pass to base64
   shell: cat ./certs/pass | base64 -w 0
   register: pass_base64
+
+- name: load variables for ecr-auto-login
+  when: aws_ecr_access_key is defined and aws_ecr_secret_key is defined
+  include_vars: "group_vars/alpha-ecr-auto-login.yml"
+
+- name: Render docker run command for ECR docker login
+  when: aws_ecr_access_key is defined and aws_ecr_secret_key is defined
+  set_fact:
+    ecr_auto_login_docker_command: "docker run {{ container_run_opts }} {{ container_image }}:{{ container_tag }}"
 
 - name: Generate dock script
   template:
