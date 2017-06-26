@@ -47,3 +47,8 @@ AWS_SECRET_KEY={{ ec2_describe_aws_secret_key }} \
 {% endif %}
 bash /opt/runnable/dock-init/init.sh | tee /var/log/user-script-dock-init.log
 {% endif %}
+{% if ecr_auto_login_docker_command is defined %}
+# Start ecr auto login run
+{{ ecr_auto_login_docker_command }}
+# End ecr auto login run
+{% endif %}
