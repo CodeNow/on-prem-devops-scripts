@@ -15,11 +15,21 @@ command += "| grep \":4242\" --color=never'"
 
 exec(command, (error, stdout, stderr) => {
   var ipMatch = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/i
-  var ips = stdout
+  var orgIdMatch = /\.([0-9]*)\:/i
+  var rawIps = stdout
     .split("\n")
     .map(ip => ip.match(ipMatch))
     .filter(x => !!x)
     .filter(isIp)
-    .map(x => x[0])
-  console.log({ docks: { hosts: ips  }})
+  var ips = rawIps.map(x => x[0])
+  var hostVars = rawIps.reduce((acc, val) => {
+    var ip = val[0]
+    var id = val.input.match(orgIdMatch)
+    acc[ip] = { host_tags: 'build,run' }
+    if (id && id[1]) {
+      acc[ip].host_tags = id[1]  + ',' + acc[ip].host_tags
+    }
+    return acc
+  }, {})
+  console.log(JSON.stringify({ docks: { hosts: ips }, _meta: { hostvars: hostVars }}))
 })
