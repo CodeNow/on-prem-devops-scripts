@@ -1,12 +1,12 @@
 {
     "agreeable_egret_branch": "v0.4.1",
-    "api_branch": "v12.4.2",
+    "api_branch": "v12.10.2",
     "arithmancy_branch": "v1.12.0",
-    "astral_branch": "v7.11.3",
+    "astral_branch": "v7.11.6",
     "big_poppa_branch": "v0.18.8",
     "clio_branch": "v1.1.2",
     "cream_branch": "v1.14.0",
-    "created": "Mon Jun 26 13:53:36 PDT 2017",
+    "created": "Wed Jul 5 14:34:32 PDT 2017",
     "detention_branch": "v1.3.4",
     "docker_listener_branch": "v10.8.0",
     "drake_branch": "v2.5.0",
@@ -16,10 +16,10 @@
     "github_varnish_branch": "v2.0.2",
     "khronos_branch": "v7.0.0",
     "link_branch": "v2.2.2",
-    "navi_branch": "v10.6.3",
+    "navi_branch": "v10.6.5",
     "optimus_branch": "v5.1.2",
     "palantiri_branch": "v2.4.9",
     "pheidi_branch": "v1.39.0",
-    "runnable_angular_branch": "v5.21.3",
+    "runnable_angular_branch": "v5.21.4",
     "sauron_branch": "v7.5.1"
 }
